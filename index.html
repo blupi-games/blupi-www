@@ -1,0 +1,593 @@
+<html><head>
+<title>Planet Blupi</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script>
+// var start = null;
+// var last = 0.0;
+// var paused = false;
+//
+// window.requestAnimationFrame =
+//   window.requestAnimationFrame ||
+//   window.mozRequestAnimationFrame ||
+//   window.webkitRequestAnimationFrame ||
+//   window.msRequestAnimationFrame;
+//
+// window.requestAnimationFrame (fpsMeasureLoop);
+//
+// function fpsMeasureLoop (timestamp) {
+//   if (start === null) {
+//     last = start = timestamp;
+//     window.requestAnimationFrame (fpsMeasureLoop);
+//     return;
+//   }
+//
+//   var dTime = timestamp - last;
+//   last = timestamp;
+//
+//   if (dTime > 33.0 && !paused) {
+//     // If more than 33ms since last frame (i.e. below 30fps)
+//     document.getElementsByTagName ('body')[0].className = 'paused';
+//     paused = true;
+//   } else if (dTime <= 33.0 && paused) {
+//     document.getElementsByTagName ('body')[0].className = null;
+//     paused = false;
+//   }
+//   window.requestAnimationFrame (fpsMeasureLoop);
+// }
+</script>
+<style>
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+  }
+
+  @media screen and (orientation:portrait) {
+    body {
+      perspective: 2.0px;
+    }
+  }
+
+  @media screen and (orientation:landscape) {
+    body {
+      perspective: 1.0px;
+    }
+  }
+
+  body {
+    background-color: black;
+    animation: open 1s;
+    animation-timing-function: steps(12);
+    backface-visibility: hidden;
+  }
+
+  @keyframes open {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .planet {
+    width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    backface-visibility: hidden;
+  }
+
+  .title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform:
+      translateZ(-2.0px)
+      translateY(-20.0%)
+      scale(1.75);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    backface-visibility: hidden;
+  }
+
+  .content {
+    position: absolute;
+    top: 0;
+    left: 10vw;
+    width: 80vw;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    transform:
+      translateZ(0)
+      translateY(100vh);
+    box-shadow: inset 8px 8px 31px -18px rgba(0,0,0,1);
+    background-color: rgba(80, 80, 80, 0.8);
+    backface-visibility: hidden;
+  }
+
+  .bottom {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 0;
+    transform:
+      translateZ(0)
+      translateY(300vh);
+    backface-visibility: hidden;
+  }
+
+  #space, #space2, .stars {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    will-change: transform;
+  }
+
+  #space {
+    height: 300vh;
+    transform: translateZ(-5px) scale(6);
+    backface-visibility: hidden;
+  }
+
+  #space2 {
+    height: 300vh;
+    transform: translateZ(-7px) scale(5);
+    backface-visibility: hidden;
+  }
+
+  .stars {
+    background-image:
+      radial-gradient(0.09vw 0.09vw at  2vw  3vh, #eee, #eee 60%, rgba(0,0,0,0)),
+      radial-gradient(0.11vw 0.11vw at  4vw  7vh, #fff, #eee 60%, rgba(0,0,0,0)),
+      radial-gradient(0.07vw 0.07vw at  5vw 16vh, #ddd, #eee 60%, rgba(0,0,0,0)),
+      radial-gradient(0.10vw 0.10vw at  9vw  4vh, #fff, #eee 60%, rgba(0,0,0,0)),
+      radial-gradient(0.12vw 0.12vw at 13vw  8vh, #fff, #eee 60%, rgba(0,0,0,0)),
+      radial-gradient(0.13vw 0.13vw at 16vw 12vh, #ddd, #eee 60%, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 17vw 17vw;
+    animation: zoom 3s infinite;
+    animation-timing-function: steps(36);
+    opacity: 0;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .stars:nth-child(1) {
+    background-position: 50% 50%;
+    animation-delay: 0s;
+  }
+  .stars:nth-child(2) {
+    background-position: 20% 60%;
+    animation-delay: 1s;
+  }
+
+  @keyframes zoom {
+    0% {
+      opacity: 0.2;
+      transform: scale(2);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      opacity: 1;
+      transform: scale(2);
+      animation-timing-function: linear;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0.2;
+    }
+  }
+
+  .container {
+    width: 100%;
+    transform:
+      translateZ(-2.5px)
+      translateY(-15.0%)
+      scale(2.5);
+    position: relative;
+    backface-visibility: hidden;
+  }
+
+  .light {
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(0.9vw 0.9vw at 60.9% 49.0%, #0f0, rgba(0,0,0,0)),
+      radial-gradient(1.0vw 1.0vw at 56.7% 70.0%, #ff0, rgba(0,0,0,0)),
+      radial-gradient(1.0vw 1.0vw at 58.6% 68.4%, #ff0, rgba(0,0,0,0)),
+      radial-gradient(0.6vw 0.6vw at 53.8% 70.1%, #f00, rgba(0,0,0,0));
+    animation: zoom 3s infinite;
+    animation-timing-function: steps(36);
+    animation-delay: 0s;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  @keyframes sun {
+    0% {
+      opacity: 0.0;
+      transform: scale(2);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(2);
+      animation-timing-function: linear;
+    }
+    100% {
+    transform: scale(2);
+      opacity: 0.0;
+    }
+  }
+
+  .sun {
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(14vw 14vw at 48.0% 52.0%, #fff, rgba(0,0,0,0));
+    animation: sun 10s infinite;
+    animation-timing-function: steps(120);
+    animation-delay: 0s;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  @keyframes shooting-1 {
+    0% {
+      left: -80vw;
+      top: -300vw;
+      transform:
+        translateZ(-2.6px)
+        rotate(75deg)
+        scale(3)
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: 45vw;
+      top: 200vw;
+      transform:
+        translateZ(-2.6px)
+        rotate(75deg)
+        scale(4);
+    }
+  }
+
+  @keyframes shooting-2 {
+    0% {
+      left: 50vw;
+      top: -300vw;
+      transform:
+        translateZ(-2.6px)
+        rotate(75deg)
+        scale(2)
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: 155vw;
+      top: 200vw;
+      transform:
+        translateZ(-2.6px)
+        rotate(75deg)
+        scale(3);
+    }
+  }
+
+  .shooting {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0.2vw;
+    height: 0.2vw;
+    background-color: white;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .shooting::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 10vw;
+    right: 0.2vw;
+    top: 0;
+    height: .2vw;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(255,255,255,0.4) 100%);
+  }
+
+  .shooting-1 {
+    animation-name: shooting-1;
+    animation-duration: 10s;
+    animation-timing-function: steps(240);
+    backface-visibility: hidden;
+  }
+
+  .shooting-2 {
+    animation-name: shooting-2;
+    animation-duration: 10s;
+    animation-timing-function: steps(240);
+    animation-delay: 3s;
+    backface-visibility: hidden;
+  }
+
+  @keyframes moon {
+    0% {
+      opacity: 0;
+      transform:
+        translateX(-140vh)
+        translateY(50vh)
+        translateZ(-2px);
+    }
+    1% {
+      opacity: 1;
+    }
+    20% {
+      filter: brightness(0%);
+      transform:
+        translateX(50vh)
+        translateY(-10vh)
+        translateZ(-3px);
+    }
+    40% {
+      filter: brightness(80%);
+      transform:
+        translateX(200vw)
+        translateY(0vh)
+        translateZ(-2px);
+    }
+    100% {
+      transform:
+        translateX(300vw)
+        translateY(10vh)
+        translateZ(-2px);
+    }
+  }
+
+  .moon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    height: 10vw;
+    background: #c7cbd0;
+    border-radius: 50%;
+    box-shadow: inset -1vw 0px 0 0px #9098a1;
+    animation: moon linear infinite;
+    animation-duration: 360s;
+    animation-timing-function: steps(1080);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    min-width: 15em;
+  }
+
+  .card-img-top {
+    max-width: 19rem;
+  }
+
+  .blupi {
+    float: right;
+    position: relative;
+    top: -60px;
+    right: -20px;
+  }
+
+  .screen {
+    height: auto;
+    width: 100%;
+    max-width: 318px;
+  }
+
+  .imgos {
+    height: auto;
+    width: 100%;
+    margin: auto;
+  }
+
+  /* Disable parallax with buggy browsers (IE and Edge) */
+  @supports (-ms-ime-align: auto) {
+    .body {
+      perspective: none;
+    }
+    .title {
+      transform: none;
+      width: 58vw;
+      left: 21vw;
+      top: 6vh;
+    }
+    .container {
+      transform: none;
+      width: 71vw;
+    }
+    .bottom {
+      transform: none;
+    }
+    #space {
+      transform: none;
+      height: 200vh;
+    }
+    #space2 {
+      transform: none;
+      height: 150vh;
+    }
+    .moon {
+      animation: none;
+      width: 3.5vw;
+      height: 3.5vw;
+      left: 10vw;
+      top: 45vh;
+      box-shadow: inset -.5vw 0px 0 0px #9098a1;
+    }
+  }
+</style>
+</head><body>
+  <div id="space">
+    <div class="stars"></div>
+    <div class="stars"></div>
+  </div>
+  <div id="space2">
+    <div class="stars"></div>
+    <div class="stars"></div>
+  </div>
+  <div class="shooting shooting-1"></div>
+  <div class="shooting shooting-2"></div>
+  <div class="moon"></div>
+  <div class="container">
+    <img src="planet.png" class="planet"/>
+    <div class="light"></div>
+    <div class="sun"></div>
+  </div>
+  <img src="title.png" class="title"/>
+  <div class="content">
+    <div class="container-fluid">
+      <h2 style="color: white;">Planet Blupi</h2>
+      <div class="card">
+        <div class="card-block">
+          <img src="blupi.png" class="blupi"/>
+          <h3 class="card-title">A delerious spell-binding game</h3>
+          <p class="card-text"><em>Planet Blupi</em> is a strategie and adventure game. It subtly blends action with thought-provoking challenges. Behind the quiet and gentle facade, you'll enjoy a fascinating diversion full of surprises. <em>Planet Blupi</em> is ideal for ages 12 to 99.</p><p>The game was freed (source code and all media files) and ported to all major platforms (Linux, macOS and Windows) for it's <b>20th anniversary</b>.</p><p>An HQ version is planned with higher resolutions and much better image quality in a near future. The current release (that you can download from this website) has mostly the same look and functionalities that the original version of 1997 but with a portable code and some bugfixes.</p><p>This game is an original creation of <a href="https://www.epsitec.ch" target="_">Epsitec SA</a> and Daniel Roux.</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card" style="max-width: 318px;">
+          <img class="card-img-top screen" src="1.png" alt="Card image cap">
+        </div>
+        <div class="card">
+          <div class="card-block">
+            <h3 class="card-title">Scenario</h3>
+            <p class="card-text"><em>Blupi</em> leads a quiet life on his planet until a strange meteorite crashes in a desert area.</p><p class="card-text">Only much later does <em>Blupi</em> realise that his crops are being destroyed by huge spiders. Though he's always been a tough and healthy type, a weird virus has been causing him to sneeze and cough a lot lately.<br/>What's going on ?</p><p class="card-text">In fact, the meteorite is a spaceship. The only passsenger on board is a mean-looking robot. Its goal is to build factories that produce a variety of aliens. Help <em>Blupi</em> use the resources of his beautiful planet to chase these invaders away !</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-block">
+            <h3 class="card-title">The game</h3>
+            <p class="card-text">There are some 30 missions to figure out, ranging from really easy to completely mind-boggling.</p><p class="card-text">The goals of the missions are varied: to grow food, to find a strategic point, to eradicate aliens, etc... You may need just one <em>Blupi</em> to accomplish the missions, or dozens !</p><p class="card-text"><ul>
+              <li>Help <em>Blupi</em> to explore</li>
+              <li>Cut trees to produce boards and planks</li>
+              <li>Transport various materials</li>
+              <li>Build houses</li>
+              <li>Grow tomatoes</li>
+              <li>Pick flowers</li>
+              <li>Survey the ground</li>
+              <li>Extract iron ore</li>
+              <li>Devis traps</li>
+              <li>Throw bridges</li>
+              <li>Cure friends</li></ul>
+            </p>
+          </div>
+        </div>
+        <div class="card" style="max-width: 318px;">
+          <img class="card-img-top screen" src="2.png" alt="Card image cap">
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card" style="max-width: 318px;">
+          <img class="card-img-top screen" src="3.png" alt="Card image cap">
+        </div>
+        <div class="card">
+          <div class="card-block">
+            <h3 class="card-title">A cool interface</h3>
+            <p class="card-text">Planet <em>Blupi</em>'s interface is designed to remain as discreet as possible, so you can have fun and concentrate on the game. There's no need for long strokes across the screen with the mouse. You don't waste time choosing buttons and artifacts from a large display somewhere out of reach.</p><p class="card-text">A small zone on the left gives general information about the mission in progress. When you want <em>Blupi</em> to do a specific action, just click on the right spot in the scenery. A palette of actions available pops up, and you can make your choice. Actions are smooth and quick.</p><p class="card-text">A limited series of optional exercises can be used to learn how to play the game.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-block">
+            <h3 class="card-title">A large selection of decors</h3>
+            <p class="card-text"><em>Blupi</em>'s planet has 4 distinct areas :<ul><li>Open prairie</li><li>Deep woods</li><li>Desert</li><li>Snowy landscape</li></ul></p><p class="card-text">Each mission is carried out in a vast area of 40'000 cells (200x200 square elements).</p><p class="card-text">You can even allow you to draw the scenery, set the goals and create your own missions.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width: 318px;">
+          <img class="card-img-top screen" src="4.png" alt="Card image cap">
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card">
+          <img class="card-img-top imgos" src="linux.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">GNU/Linux</h4>
+            <p class="card-text">Standalone <a href="http://appimage.org" target="_">AppImage</a> version, just add the executable flag and play.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Download</a>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top imgos" src="macos.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">macOS</h4>
+            <p class="card-text">Open the DMG image, copy the game where you want or execute directly from the image.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Download</a>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top imgos" src="windows.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">Windows</h4>
+            <p class="card-text">Windows version which can be installed with this <a href="http://nsis.sourceforge.net" target="_">NSIS</a> installer.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Download</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-block">
+            <h3 class="card-title">Join the community</h3>
+            <p><em>Planet Blupi</em> and all resource files are licensed to the GPL3+ license.</p>
+            <div class="card-group">
+              <div class="btn-group" role="group" aria-label="">
+                <a href="https://github.com/blupi-games" target="_"><button type="button" class="btn btn-secondary">GitHub</button></a>&nbsp;
+                <a href="https://twitter.com/BlupiGames" target="_"><button type="button" class="btn btn-secondary">Twitter</button></a>&nbsp;
+                <a href="https://www.facebook.com/BlupiGames" target="_"><button type="button" class="btn btn-secondary">Facebook</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">&nbsp;</div>
+</body></html>
