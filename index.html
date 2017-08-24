@@ -466,13 +466,22 @@
   }
 
   @media screen and (max-device-width: 650px) {
-    .content {
-      left: 0;
-      width: 66.66vw;
-      top: -33vh;
+    @media screen and (orientation:portrait) {
+      .content {
+        width: 50vw;
+        top: -50vh;
+        zoom: 2;
+      }
+    }
+    @media screen and (orientation:landscape) {
+      .content {
+        width: 66.6666vw;
+        top: -33.3333vh;
+        zoom: 1.5;
+      }
     }
     .content {
-      zoom: 1.5;
+      left: 0;
     }
   }
 </style>
