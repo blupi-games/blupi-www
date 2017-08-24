@@ -457,6 +457,24 @@
       box-shadow: inset -.5vw 0px 0 0px #9098a1;
     }
   }
+
+  @media screen and (max-width: 800px) {
+    .content {
+      left: 0;
+      width: calc(100vw - (100vw - 100%));
+    }
+  }
+
+  @media screen and (max-device-width: 650px) {
+    .content {
+      left: 0;
+      width: 66.66vw;
+      top: -33vh;
+    }
+    .content {
+      zoom: 1.5;
+    }
+  }
 </style>
 </head><body>
   <div id="space">
