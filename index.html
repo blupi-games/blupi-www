@@ -6,40 +6,6 @@
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script>
-// var start = null;
-// var last = 0.0;
-// var paused = false;
-//
-// window.requestAnimationFrame =
-//   window.requestAnimationFrame ||
-//   window.mozRequestAnimationFrame ||
-//   window.webkitRequestAnimationFrame ||
-//   window.msRequestAnimationFrame;
-//
-// window.requestAnimationFrame (fpsMeasureLoop);
-//
-// function fpsMeasureLoop (timestamp) {
-//   if (start === null) {
-//     last = start = timestamp;
-//     window.requestAnimationFrame (fpsMeasureLoop);
-//     return;
-//   }
-//
-//   var dTime = timestamp - last;
-//   last = timestamp;
-//
-//   if (dTime > 33.0 && !paused) {
-//     // If more than 33ms since last frame (i.e. below 30fps)
-//     document.getElementsByTagName ('body')[0].className = 'paused';
-//     paused = true;
-//   } else if (dTime <= 33.0 && paused) {
-//     document.getElementsByTagName ('body')[0].className = null;
-//     paused = false;
-//   }
-//   window.requestAnimationFrame (fpsMeasureLoop);
-// }
-</script>
 <style>
   html,
   body {
@@ -553,7 +519,7 @@
           <h3 class="card-title">A delerious spell-binding game</h3>
           <p><big><b>WEBSITE IS WORK IN PROGRESS</b></big></p>
           <p class="card-text"><em>Planet Blupi</em> is a strategie and adventure game. It subtly blends action with thought-provoking challenges. Behind the quiet and gentle facade, you'll enjoy a fascinating diversion full of surprises. <em>Planet Blupi</em> is ideal for ages 12 to 99.</p><p>The game was freed (source code and all media files) and ported to all major platforms (Linux, macOS and Windows) for it's <b>20th anniversary</b>.</p><p>An HQ version is planned with higher resolutions and much better image quality in a near future. The current release (that you can download from this website) has mostly the same look and functionalities that the original version of 1997 but with a portable code and some bugfixes.</p>
-          <p class="card-text"><b>Scroll down</b> in order to download the game (it includes <b>english</b>, <b>US english</b>, <b>french (français)</b> and <b>german (deutsch)</b>) languages.</p>
+          <p class="card-text"><b><a href="#downloads">Scroll down</a></b> in order to download the game (it includes <b>english</b>, <b>US english</b>, <b>french (français)</b> and <b>german (deutsch)</b>) languages.</p>
         </div>
       </div>
       <div class="card-group">
@@ -695,7 +661,7 @@
           </div>
         </div>
       </div>
-      <div class="card-group">
+      <div class="card-group" id="downloads"/>
         <div class="card">
           <img class="card-img-top imgos" src="linux.png" alt="Card image cap">
           <div class="card-block">
