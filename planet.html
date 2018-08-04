@@ -116,22 +116,18 @@
 
     #space2 {
       height: 300vh;
-      transform: translateZ(-7px) scale(5);
+      transform: translateZ(-7px) scale(8) rotate(90deg);
       backface-visibility: hidden;
+      opacity: 0.5;
     }
 
     .stars {
-      background-image: radial-gradient(0.09vw 0.09vw at 2vw 3vh, #eee, #eee 60%, rgba(0, 0, 0, 0)),
-      radial-gradient(0.11vw 0.11vw at 4vw 7vh, #fff, #eee 60%, rgba(0, 0, 0, 0)),
-      radial-gradient(0.07vw 0.07vw at 5vw 16vh, #ddd, #eee 60%, rgba(0, 0, 0, 0)),
-      radial-gradient(0.10vw 0.10vw at 9vw 4vh, #fff, #eee 60%, rgba(0, 0, 0, 0)),
-      radial-gradient(0.12vw 0.12vw at 13vw 8vh, #fff, #eee 60%, rgba(0, 0, 0, 0)),
-      radial-gradient(0.13vw 0.13vw at 16vw 12vh, #ddd, #eee 60%, rgba(0, 0, 0, 0));
+      background-image: url('stars.png');
       background-repeat: repeat;
-      background-size: 17vw 17vw;
-      animation: zoom 3s infinite;
+      background-size: 30vw 30vw;
+      /*animation: zoom 3s infinite;*/
       animation-timing-function: steps(36);
-      opacity: 0;
+      opacity: 0.5;
       will-change: transform;
       backface-visibility: hidden;
     }
@@ -476,13 +472,15 @@
     <div class="stars"></div>
     <div class="stars"></div>
   </div>
-  <div class="shooting shooting-1"></div>
-  <div class="shooting shooting-2"></div>
-  <div class="moon"></div>
+  <!-- animation is too CPU intensive -->
+  <!-- <div class="shooting shooting-1"></div> -->
+  <!-- <div class="shooting shooting-2"></div> -->
+  <!-- <div class="moon"></div> -->
   <div class="planet-container">
     <img src="planet.png" class="planet" />
-    <div class="light"></div>
-    <div class="sun"></div>
+    <!-- animation is too CPU intensive -->
+    <!-- <div class="light"></div> -->
+    <!-- <div class="sun"></div> -->
   </div>
   <img src="title.png" class="title" />
   <div class="content">
