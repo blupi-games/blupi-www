@@ -656,6 +656,75 @@
                 handling is more painful that using
                 <em>MSYS2</em> under
                 <em>Windows</em>.</p>
+              <h4 class="card-title">ChangeLog v1.13</h4>
+              <p class="card-text">
+                <table class="table table-sm" style="width: 100%; margin-left: 3px">
+                  <tr>
+                    <th scope="row" style="width: 1%">New</th>
+                    <td>Add wide screen support (it uses the desktop resolution with scaling)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New</th>
+                    <td>Add a new <tt>--legacy</tt> option for starting the game in 640x480 (original)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New</th>
+                    <td>Add more options to the global settings screen (legacy mode and anti-aliasing)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New</th>
+                    <td>Mouse right click on flowers is working</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New</th>
+                    <td>Use SDL_kitchensink 1.x that adds Android support for videos (maybe more)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New</th>
+                    <td>Add emscripten support (experimental online version of the game is available)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New</th>
+                    <td>Add a man page for Linux (see <tt>planetblupi/planetblupi.1.ronn</tt>)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Fix OpenGL ES2 support (very useful for Android support)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Fix glitch where a dead Blupi or enemy can be seen when the screen is moving</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Disable smooth screen scroll with demo recording and playing</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>It's no longer possible to build a mine without prospecting (see <tt>--restore-bugs</tt>)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Fix a lot of old bugs with mouse hovers</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Fix old bug where it was possible to save a game which was never played</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>When a Blupi or an enemy is killed by an explosion, the sound is stopped immediately (it was a common issue with a lot of gamers)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Fix the sound with the help panel (only on mouse up)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bug</th>
+                    <td>Fix the ALSA support when PulseAudio is not available (only on Linux)</td>
+                  </tr>
+                </table>
+              </p>
               <h4 class="card-title">ChangeLog v1.12</h4>
               <p class="card-text">
                 <table class="table table-sm" style="width: 100%; margin-left: 3px">
@@ -873,7 +942,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.12.5/planetblupi.AppImage"
+          <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.13.0/planetblupi.AppImage"
             class="btn btn-primary">
             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
         </div>
@@ -895,7 +964,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.12.5/planetblupi-1.12.5.dmg"
+          <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.13.0/planetblupi-1.13.0.dmg"
             class="btn btn-primary">
             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
         </div>
@@ -919,10 +988,10 @@
         </div>
         <div class="card-footer">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.12.5/planetblupi-1.12.5.exe"
+            <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.13.0/planetblupi-1.13.0.exe"
               class="btn btn-primary">
               <i class="fa fa-download" aria-hidden="true"></i> Download x86-64</a>
-            <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.12.5/planetblupi-1.12.5-x86_32.exe"
+            <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.13.0/planetblupi-1.13.0-x86_32.exe"
               class="btn btn-secondary">x86-32</a>
           </div>
         </div>
