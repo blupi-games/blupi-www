@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Planet Blupi / Planet Eggbert</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
@@ -51,6 +51,22 @@
       }
     }
 
+    a:hover {
+      text-decoration: none;
+    }
+
+    .top {
+      color: white;
+      padding: 10px;
+      border: 0;
+      border-radius: 10px;
+      position: absolute;
+      top: 4vh;
+      left: 2vw;
+      opacity: 0.6;
+      font-size: 250%;
+    }
+
     .tip {
       color: white;
       padding: 10px;
@@ -61,6 +77,10 @@
       right: 2vw;
       opacity: 0.3;
       font-size: 250%;
+    }
+
+    .top a {
+      color:white;
     }
 
     .planet {
@@ -349,8 +369,16 @@
       max-width: 19rem;
     }
 
+    .card-title {
+      background-color: transparent;
+    }
+
     .btn-link {
       cursor: pointer;
+    }
+
+    .btn-link:hover {
+      text-decoration: none;
     }
 
     .blupi {
@@ -500,6 +528,7 @@
     <!-- <div class="sun"></div> -->
   </div>
   <img src="images/title.png" class="title" />
+  <div class="top"><a href="index.html"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></a></div>
   <div class="tip"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></div>
   <div class="content">
     <div class="container-fluid">
