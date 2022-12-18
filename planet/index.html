@@ -1,1342 +1,1849 @@
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Planet Blupi / Planet Eggbert</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-    crossorigin="anonymous"></script>
-  <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-      margin: 0;
-    }
-
-    @media screen and (orientation:portrait) {
+  <head>
+    <meta charset="UTF-8" />
+    <title>Planet Blupi / Planet Eggbert</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+      integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      html,
       body {
-        perspective: 2.0px;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin: 0;
       }
-    }
 
-    @media screen and (orientation:landscape) {
-      body {
-        perspective: 1.0px;
-      }
-    }
-
-    body {
-      background-color: black;
-      animation: open 1s;
-      animation-timing-function: steps(12);
-      backface-visibility: hidden;
-    }
-
-    @keyframes open {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    a:hover {
-      text-decoration: none;
-    }
-
-    .top {
-      color: white;
-      padding: 10px;
-      border: 0;
-      border-radius: 10px;
-      position: absolute;
-      top: 4vh;
-      left: 2vw;
-      opacity: 0.6;
-      font-size: 250%;
-      transform: scale(-1, 1);
-    }
-
-    .tip {
-      color: white;
-      padding: 10px;
-      border: 0;
-      border-radius: 10px;
-      position: absolute;
-      bottom: 4vh;
-      right: 2vw;
-      opacity: 0.3;
-      font-size: 250%;
-    }
-
-    .top a {
-      color:white;
-    }
-
-    .planet {
-      width: 100%;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-      backface-visibility: hidden;
-    }
-
-    .title {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      transform: translateZ(-2.0px) translateY(-20.0%) scale(1.75);
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-      backface-visibility: hidden;
-    }
-
-    .content {
-      position: absolute;
-      top: 0;
-      left: 10vw;
-      width: 80vw;
-      border-radius: 5px;
-      padding-top: 15px;
-      padding-bottom: 10px;
-      transform: translateZ(0) translateY(100vh);
-      box-shadow: inset 8px 8px 31px -18px rgba(0, 0, 0, 1);
-      background-color: rgba(80, 80, 80, 0.8);
-      backface-visibility: hidden;
-    }
-
-    .bottom {
-      transform: translateY(50px);
-      width: 80vw;
-      height: 0;
-      backface-visibility: hidden;
-    }
-
-    #space,
-    #space2,
-    .stars {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      will-change: transform;
-    }
-
-    #space {
-      height: 300vh;
-      transform: translateZ(-5px) scale(6);
-      backface-visibility: hidden;
-    }
-
-    #space2 {
-      height: 300vh;
-      transform: translateZ(-7px) scale(8) rotate(90deg);
-      backface-visibility: hidden;
-      opacity: 0.5;
-    }
-
-    .stars {
-      background-image: url('images/stars.png');
-      background-repeat: repeat;
-      background-size: 30vw 30vw;
-      /*animation: zoom 3s infinite;*/
-      animation-timing-function: steps(36);
-      opacity: 0.5;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-
-    .stars:nth-child(1) {
-      background-position: 50% 50%;
-      animation-delay: 0s;
-    }
-
-    .stars:nth-child(2) {
-      background-position: 20% 60%;
-      animation-delay: 1s;
-    }
-
-    @keyframes zoom {
-      0% {
-        opacity: 0.2;
-        transform: scale(2);
-        animation-timing-function: ease-in;
-      }
-      50% {
-        opacity: 1;
-        transform: scale(2);
-        animation-timing-function: linear;
-      }
-      100% {
-        transform: scale(2);
-        opacity: 0.2;
-      }
-    }
-
-    .planet-container {
-      width: 100%;
-      transform: translateZ(-2.5px) translateY(-15.0%) scale(2.5);
-      position: relative;
-      backface-visibility: hidden;
-    }
-
-    .light {
-      float: left;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(0.9vw 0.9vw at 60.9% 49.0%, #0f0, rgba(0, 0, 0, 0)),
-      radial-gradient(1.0vw 1.0vw at 56.7% 70.0%, #ff0, rgba(0, 0, 0, 0)),
-      radial-gradient(1.0vw 1.0vw at 58.6% 68.4%, #ff0, rgba(0, 0, 0, 0)),
-      radial-gradient(0.6vw 0.6vw at 53.8% 70.1%, #f00, rgba(0, 0, 0, 0));
-      animation: zoom 3s infinite;
-      animation-timing-function: steps(36);
-      animation-delay: 0s;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-
-    @keyframes sun {
-      0% {
-        opacity: 0.0;
-        transform: scale(2);
-        animation-timing-function: ease-in;
-      }
-      50% {
-        opacity: 0.3;
-        transform: scale(2);
-        animation-timing-function: linear;
-      }
-      100% {
-        transform: scale(2);
-        opacity: 0.0;
-      }
-    }
-
-    .sun {
-      float: left;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(14vw 14vw at 48.0% 52.0%, #fff, rgba(0, 0, 0, 0));
-      animation: sun 10s infinite;
-      animation-timing-function: steps(120);
-      animation-delay: 0s;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-
-    @keyframes shooting-1 {
-      0% {
-        left: -80vw;
-        top: -300vw;
-        transform: translateZ(-2.6px) rotate(75deg) scale(3)
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        left: 45vw;
-        top: 200vw;
-        transform: translateZ(-2.6px) rotate(75deg) scale(4);
-      }
-    }
-
-    @keyframes shooting-2 {
-      0% {
-        left: 50vw;
-        top: -300vw;
-        transform: translateZ(-2.6px) rotate(75deg) scale(2)
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        left: 155vw;
-        top: 200vw;
-        transform: translateZ(-2.6px) rotate(75deg) scale(3);
-      }
-    }
-
-    .shooting {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0.2vw;
-      height: 0.2vw;
-      background-color: white;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-
-    .shooting::before {
-      position: absolute;
-      display: block;
-      content: "";
-      width: 10vw;
-      right: 0.2vw;
-      top: 0;
-      height: .2vw;
-      background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
-    }
-
-    .shooting-1 {
-      animation-name: shooting-1;
-      animation-duration: 10s;
-      animation-timing-function: steps(240);
-      backface-visibility: hidden;
-    }
-
-    .shooting-2 {
-      animation-name: shooting-2;
-      animation-duration: 10s;
-      animation-timing-function: steps(240);
-      animation-delay: 3s;
-      backface-visibility: hidden;
-    }
-
-    @keyframes moon {
-      0% {
-        opacity: 0;
-        transform: translateX(-140vh) translateY(50vh) translateZ(-2px);
-      }
-      1% {
-        opacity: 1;
-      }
-      20% {
-        filter: brightness(0%);
-        transform: translateX(50vh) translateY(-10vh) translateZ(-3px);
-      }
-      40% {
-        filter: brightness(80%);
-        transform: translateX(200vw) translateY(0vh) translateZ(-2px);
-      }
-      100% {
-        transform: translateX(300vw) translateY(10vh) translateZ(-2px);
-      }
-    }
-
-    .moon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 10vw;
-      height: 10vw;
-      background: #c7cbd0;
-      border-radius: 50%;
-      box-shadow: inset -1vw 0px 0 0px #9098a1;
-      animation: moon linear infinite;
-      animation-duration: 360s;
-      animation-timing-function: steps(1080);
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-
-    .card {
-      margin-top: 5px;
-      margin-bottom: 5px;
-      min-width: 17em;
-      border: none;
-    }
-
-    .card-img-top {
-      max-width: 19rem;
-    }
-
-    .card-title {
-      background-color: transparent;
-    }
-
-    .btn-link {
-      cursor: pointer;
-    }
-
-    .btn-link:hover {
-      text-decoration: none;
-    }
-
-    .blupi {
-      float: right;
-      position: relative;
-      top: -60px;
-      right: -20px;
-    }
-
-    .screen {
-      height: auto;
-      width: 100%;
-      max-width: 318px;
-    }
-
-    .imgos {
-      height: auto;
-      width: 100%;
-      margin: auto;
-    }
-
-    th {
-      vertical-align: text-top;
-    }
-
-    /* Disable parallax with buggy browsers (IE and Edge) */
-
-    @media all and (-ms-high-contrast: none),
-    (-ms-high-contrast: active) {
-      .body {
-        perspective: none;
-      }
-      .title {
-        transform: none;
-        width: 58vw;
-        left: 21vw;
-        top: 6vh;
-      }
-      .planet-container {
-        transform: none;
-        width: 71vw;
-        margin-bottom: 100px;
-      }
-      .bottom {
-        transform: none;
-      }
-      #space {
-        transform: none;
-        height: 200vh;
-      }
-      #space2 {
-        transform: none;
-        height: 150vh;
-      }
-      .moon {
-        animation: none;
-        width: 3.5vw;
-        height: 3.5vw;
-        left: 10vw;
-        top: 45vh;
-        box-shadow: inset -.5vw 0px 0 0px #9098a1;
-      }
-    }
-
-    @supports (-ms-ime-align: auto) {
-      .body {
-        perspective: none;
-      }
-      .title {
-        transform: none;
-        width: 58vw;
-        left: 21vw;
-        top: 6vh;
-      }
-      .planet-container {
-        transform: none;
-        width: 71vw;
-        margin-bottom: 100px;
-      }
-      .bottom {
-        transform: none;
-      }
-      #space {
-        transform: none;
-        height: 200vh;
-      }
-      #space2 {
-        transform: none;
-        height: 150vh;
-      }
-      .moon {
-        animation: none;
-        width: 3.5vw;
-        height: 3.5vw;
-        left: 10vw;
-        top: 45vh;
-        box-shadow: inset -.5vw 0px 0 0px #9098a1;
-      }
-    }
-
-    @media screen and (max-width: 800px) {
-      .content {
-        left: 0;
-        width: calc(100vw - (100vw - 100%));
-      }
-    }
-
-    @media screen and (max-device-width: 650px) {
       @media screen and (orientation: portrait) {
-        .content {
-          width: 50vw;
-          top: -50vh;
-          zoom: 2;
+        body {
+          perspective: 2px;
         }
       }
-      @media screen and (orientation:landscape) {
-        .content {
-          width: 66.6666vw;
-          top: -33.3333vh;
-          zoom: 1.5;
+
+      @media screen and (orientation: landscape) {
+        body {
+          perspective: 1px;
         }
       }
-      .content {
+
+      body {
+        background-color: black;
+        animation: open 1s;
+        animation-timing-function: steps(12);
+        backface-visibility: hidden;
+      }
+
+      @keyframes open {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      .top {
+        color: white;
+        padding: 10px;
+        border: 0;
+        border-radius: 10px;
+        position: absolute;
+        top: 4vh;
+        left: 2vw;
+        opacity: 0.6;
+        font-size: 250%;
+        transform: scale(-1, 1);
+      }
+
+      .tip {
+        color: white;
+        padding: 10px;
+        border: 0;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 4vh;
+        right: 2vw;
+        opacity: 0.3;
+        font-size: 250%;
+      }
+
+      .top a {
+        color: white;
+      }
+
+      .planet {
+        width: 100%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        backface-visibility: hidden;
+      }
+
+      .title {
+        position: absolute;
         left: 0;
+        top: 0;
+        width: 100%;
+        transform: translateZ(-2px) translateY(-20%) scale(1.75);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        backface-visibility: hidden;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div id="space">
-    <div class="stars"></div>
-    <div class="stars"></div>
-  </div>
-  <div id="space2">
-    <div class="stars"></div>
-    <div class="stars"></div>
-  </div>
-  <!-- animation is too CPU intensive -->
-  <!-- <div class="shooting shooting-1"></div> -->
-  <!-- <div class="shooting shooting-2"></div> -->
-  <!-- <div class="moon"></div> -->
-  <div class="planet-container">
-    <img src="images/planet.png" class="planet" />
+      .content {
+        position: absolute;
+        top: 0;
+        left: 10vw;
+        width: 80vw;
+        border-radius: 5px;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        transform: translateZ(0) translateY(100vh);
+        box-shadow: inset 8px 8px 31px -18px rgba(0, 0, 0, 1);
+        background-color: rgba(80, 80, 80, 0.8);
+        backface-visibility: hidden;
+      }
+
+      .bottom {
+        transform: translateY(50px);
+        width: 80vw;
+        height: 0;
+        backface-visibility: hidden;
+      }
+
+      #space,
+      #space2,
+      .stars {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        will-change: transform;
+      }
+
+      #space {
+        height: 300vh;
+        transform: translateZ(-5px) scale(6);
+        backface-visibility: hidden;
+      }
+
+      #space2 {
+        height: 300vh;
+        transform: translateZ(-7px) scale(8) rotate(90deg);
+        backface-visibility: hidden;
+        opacity: 0.5;
+      }
+
+      .stars {
+        background-image: url("images/stars.png");
+        background-repeat: repeat;
+        background-size: 30vw 30vw;
+        /*animation: zoom 3s infinite;*/
+        animation-timing-function: steps(36);
+        opacity: 0.5;
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      .stars:nth-child(1) {
+        background-position: 50% 50%;
+        animation-delay: 0s;
+      }
+
+      .stars:nth-child(2) {
+        background-position: 20% 60%;
+        animation-delay: 1s;
+      }
+
+      @keyframes zoom {
+        0% {
+          opacity: 0.2;
+          transform: scale(2);
+          animation-timing-function: ease-in;
+        }
+        50% {
+          opacity: 1;
+          transform: scale(2);
+          animation-timing-function: linear;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0.2;
+        }
+      }
+
+      .planet-container {
+        width: 100%;
+        transform: translateZ(-2.5px) translateY(-15%) scale(2.5);
+        position: relative;
+        backface-visibility: hidden;
+      }
+
+      .light {
+        float: left;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            0.9vw 0.9vw at 60.9% 49%,
+            #0f0,
+            rgba(0, 0, 0, 0)
+          ),
+          radial-gradient(1vw 1vw at 56.7% 70%, #ff0, rgba(0, 0, 0, 0)),
+          radial-gradient(1vw 1vw at 58.6% 68.4%, #ff0, rgba(0, 0, 0, 0)),
+          radial-gradient(0.6vw 0.6vw at 53.8% 70.1%, #f00, rgba(0, 0, 0, 0));
+        animation: zoom 3s infinite;
+        animation-timing-function: steps(36);
+        animation-delay: 0s;
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      @keyframes sun {
+        0% {
+          opacity: 0;
+          transform: scale(2);
+          animation-timing-function: ease-in;
+        }
+        50% {
+          opacity: 0.3;
+          transform: scale(2);
+          animation-timing-function: linear;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+
+      .sun {
+        float: left;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          14vw 14vw at 48% 52%,
+          #fff,
+          rgba(0, 0, 0, 0)
+        );
+        animation: sun 10s infinite;
+        animation-timing-function: steps(120);
+        animation-delay: 0s;
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      @keyframes shooting-1 {
+        0% {
+          left: -80vw;
+          top: -300vw;
+          transform: translateZ(-2.6px) rotate(75deg) scale(3);
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          left: 45vw;
+          top: 200vw;
+          transform: translateZ(-2.6px) rotate(75deg) scale(4);
+        }
+      }
+
+      @keyframes shooting-2 {
+        0% {
+          left: 50vw;
+          top: -300vw;
+          transform: translateZ(-2.6px) rotate(75deg) scale(2);
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          left: 155vw;
+          top: 200vw;
+          transform: translateZ(-2.6px) rotate(75deg) scale(3);
+        }
+      }
+
+      .shooting {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0.2vw;
+        height: 0.2vw;
+        background-color: white;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      .shooting::before {
+        position: absolute;
+        display: block;
+        content: "";
+        width: 10vw;
+        right: 0.2vw;
+        top: 0;
+        height: 0.2vw;
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(255, 255, 255, 0.4) 100%
+        );
+      }
+
+      .shooting-1 {
+        animation-name: shooting-1;
+        animation-duration: 10s;
+        animation-timing-function: steps(240);
+        backface-visibility: hidden;
+      }
+
+      .shooting-2 {
+        animation-name: shooting-2;
+        animation-duration: 10s;
+        animation-timing-function: steps(240);
+        animation-delay: 3s;
+        backface-visibility: hidden;
+      }
+
+      @keyframes moon {
+        0% {
+          opacity: 0;
+          transform: translateX(-140vh) translateY(50vh) translateZ(-2px);
+        }
+        1% {
+          opacity: 1;
+        }
+        20% {
+          filter: brightness(0%);
+          transform: translateX(50vh) translateY(-10vh) translateZ(-3px);
+        }
+        40% {
+          filter: brightness(80%);
+          transform: translateX(200vw) translateY(0vh) translateZ(-2px);
+        }
+        100% {
+          transform: translateX(300vw) translateY(10vh) translateZ(-2px);
+        }
+      }
+
+      .moon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10vw;
+        height: 10vw;
+        background: #c7cbd0;
+        border-radius: 50%;
+        box-shadow: inset -1vw 0px 0 0px #9098a1;
+        animation: moon linear infinite;
+        animation-duration: 360s;
+        animation-timing-function: steps(1080);
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      .card {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        min-width: 17em;
+        border: none;
+      }
+
+      .card-img-top {
+        max-width: 19rem;
+      }
+
+      .card-title {
+        background-color: transparent;
+      }
+
+      .btn-link {
+        cursor: pointer;
+      }
+
+      .btn-link:hover {
+        text-decoration: none;
+      }
+
+      .blupi {
+        float: right;
+        position: relative;
+        top: -60px;
+        right: -20px;
+      }
+
+      .screen {
+        height: auto;
+        width: 100%;
+        max-width: 318px;
+      }
+
+      .imgos {
+        height: auto;
+        width: 100%;
+        margin: auto;
+      }
+
+      th {
+        vertical-align: text-top;
+      }
+
+      /* Disable parallax with buggy browsers (IE and Edge) */
+
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .body {
+          perspective: none;
+        }
+        .title {
+          transform: none;
+          width: 58vw;
+          left: 21vw;
+          top: 6vh;
+        }
+        .planet-container {
+          transform: none;
+          width: 71vw;
+          margin-bottom: 100px;
+        }
+        .bottom {
+          transform: none;
+        }
+        #space {
+          transform: none;
+          height: 200vh;
+        }
+        #space2 {
+          transform: none;
+          height: 150vh;
+        }
+        .moon {
+          animation: none;
+          width: 3.5vw;
+          height: 3.5vw;
+          left: 10vw;
+          top: 45vh;
+          box-shadow: inset -0.5vw 0px 0 0px #9098a1;
+        }
+      }
+
+      @supports (-ms-ime-align: auto) {
+        .body {
+          perspective: none;
+        }
+        .title {
+          transform: none;
+          width: 58vw;
+          left: 21vw;
+          top: 6vh;
+        }
+        .planet-container {
+          transform: none;
+          width: 71vw;
+          margin-bottom: 100px;
+        }
+        .bottom {
+          transform: none;
+        }
+        #space {
+          transform: none;
+          height: 200vh;
+        }
+        #space2 {
+          transform: none;
+          height: 150vh;
+        }
+        .moon {
+          animation: none;
+          width: 3.5vw;
+          height: 3.5vw;
+          left: 10vw;
+          top: 45vh;
+          box-shadow: inset -0.5vw 0px 0 0px #9098a1;
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        .content {
+          left: 0;
+          width: calc(100vw - (100vw - 100%));
+        }
+      }
+
+      @media screen and (max-device-width: 650px) {
+        @media screen and (orientation: portrait) {
+          .content {
+            width: 50vw;
+            top: -50vh;
+            zoom: 2;
+          }
+        }
+        @media screen and (orientation: landscape) {
+          .content {
+            width: 66.6666vw;
+            top: -33.3333vh;
+            zoom: 1.5;
+          }
+        }
+        .content {
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="space">
+      <div class="stars"></div>
+      <div class="stars"></div>
+    </div>
+    <div id="space2">
+      <div class="stars"></div>
+      <div class="stars"></div>
+    </div>
     <!-- animation is too CPU intensive -->
-    <!-- <div class="light"></div> -->
-    <!-- <div class="sun"></div> -->
-  </div>
-  <img src="images/title.png" class="title" />
-  <div class="top"><a href="//blupi.org/index.html"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></a></div>
-  <div class="tip"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></div>
-  <div class="content">
-    <div class="container-fluid">
-      <h2 style="color: white;">Planet Blupi <span style="font-size: 40%">(Planet Eggbert)</span></h2>
-      <div class="card">
-        <div class="card-body">
-          <div class="card-block">
-            <img src="images/blupi.png" class="blupi" />
-            <h3 class="card-title">A delirious spell-binding game</h3>
-            <p class="card-text">
-              <em>Planet Blupi</em> (known as Planet Eggbert too) is a strategy
-              and adventure game. It subtly blends action with thought-provoking
-              challenges. Behind the quiet and gentle facade, you'll enjoy a
-              fascinating diversion full of surprises. <em>Planet Blupi</em> is
-              ideal for ages 12 to 99.</p>
-            <p>The game was freed (source code and all media files) and ported to all
-              major platforms (Linux, macOS and Windows) for it's
-              <b>20th anniversary</b>.</p>
-            <p>An HQ version is planned with higher resolutions and much better image
-              quality in a near future. The current release (that you can download
-              from this website) has mostly the same look and functionalities that
-              the original version of 1997 but with a portable code and some bugfixes.</p>
-            <p class="card-text">
-              <b>
-                <a href="#downloads">Scroll down</a>
-              </b> in order to download the game.
-            </p>
-            <p class="card-text">Included languages:
+    <!-- <div class="shooting shooting-1"></div> -->
+    <!-- <div class="shooting shooting-2"></div> -->
+    <!-- <div class="moon"></div> -->
+    <div class="planet-container">
+      <img src="images/planet.png" class="planet" />
+      <!-- animation is too CPU intensive -->
+      <!-- <div class="light"></div> -->
+      <!-- <div class="sun"></div> -->
+    </div>
+    <img src="images/title.png" class="title" />
+    <div class="top">
+      <a href="//blupi.org/index.html"
+        ><i class="fas fa-sign-out-alt" aria-hidden="true"></i
+      ></a>
+    </div>
+    <div class="tip">
+      <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+    </div>
+    <div class="content">
+      <div class="container-fluid">
+        <h2 style="color: white">
+          Planet Blupi <span style="font-size: 40%">(Planet Eggbert)</span>
+        </h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="card-block">
+              <img src="images/blupi.png" class="blupi" />
+              <h3 class="card-title">A delirious spell-binding game</h3>
+              <p class="card-text">
+                <em>Planet Blupi</em> (known as Planet Eggbert too) is a
+                strategy and adventure game. It subtly blends action with
+                thought-provoking challenges. Behind the quiet and gentle
+                facade, you'll enjoy a fascinating diversion full of surprises.
+                <em>Planet Blupi</em> is ideal for ages 12 to 99.
+              </p>
+              <p>
+                The game was freed (source code and all media files) and ported
+                to all major platforms (Linux, macOS and Windows) for it's
+                <b>20th anniversary</b>.
+              </p>
+              <p>
+                An HQ version is planned with higher resolutions and much better
+                image quality in a near future. The current release (that you
+                can download from this website) has mostly the same look and
+                functionalities that the original version of 1997 but with a
+                portable code and some bugfixes.
+              </p>
+              <p class="card-text">
+                <b>
+                  <a href="#downloads">Scroll down</a>
+                </b>
+                in order to download the game.
+              </p>
+              <p class="card-text">Included languages:</p>
               <ul>
-                <li><img style="margin-right: 3px" src="images/en.png"/><b>English</b></li>
-                <li><img style="margin-right: 3px" src="images/en_US.png"/><b>US English</b></li>
-                <li><img style="margin-right: 3px" src="images/fr.png"/><b>French</b> (français)</li>
-                <li><img style="margin-right: 3px" src="images/de.png"/><b>German</b> (Deutsch)</li>
-                <li><img style="margin-right: 3px" src="images/it.png"/><b>Italian</b> (italiano)</li>
-                <li><img style="margin-right: 3px" src="images/pl.png"/><b>Polish</b> (Polski)</li>
-                <li><img style="margin-right: 3px" src="images/tr.png"/><b>Turkish</b> (Türkçe)</li>
-                <li><img style="margin-right: 3px" src="images/pt.png"/><b>Portuguese</b> (português)</li>
-                <li><img style="margin-right: 3px" src="images/he.png"/><b>Hebrew</b> (עברית)</li>
+                <li>
+                  <img style="margin-right: 3px" src="images/en.png" /><b
+                    >English</b
+                  >
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/en_US.png" /><b
+                    >US English</b
+                  >
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/fr.png" /><b
+                    >French</b
+                  >
+                  (français)
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/de.png" /><b
+                    >German</b
+                  >
+                  (Deutsch)
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/it.png" /><b
+                    >Italian</b
+                  >
+                  (italiano)
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/pl.png" /><b
+                    >Polish</b
+                  >
+                  (Polski)
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/tr.png" /><b
+                    >Turkish</b
+                  >
+                  (Türkçe)
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/pt.png" /><b
+                    >Portuguese</b
+                  >
+                  (português)
+                </li>
+                <li>
+                  <img style="margin-right: 3px" src="images/he.png" /><b
+                    >Hebrew</b
+                  >
+                  (עברית)
+                </li>
               </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="card-group">
-        <div class="card" style="max-width: 320px;">
-          <img class="card-img-top screen" src="images/1.png" alt="Card image cap">
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-block">
-              <h3 class="card-title">Scenario</h3>
-              <p class="card-text">
-                <em>Blupi</em> leads a quiet life on his planet until a strange meteorite
-                crashes in a desert area.</p>
-              <p class="card-text">Only much later does
-                <em>Blupi</em> realise that his crops are being destroyed by huge spiders.
-                Though he's always been a tough and healthy type, a weird virus has
-                been causing him to sneeze and cough a lot lately.
-                <br/>What's going on ?</p>
-              <p class="card-text">In fact, the meteorite is a spaceship. The only passenger on board
-                is a mean-looking robot. Its goal is to build factories that produce
-                a variety of aliens. Help
-                <em>Blupi</em> use the resources of his beautiful planet to chase these
-                invaders away !</p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-block">
-              <h3 class="card-title">The game</h3>
-              <p class="card-text">There are some 30 missions to figure out, ranging from really easy
-                to completely mind-boggling.</p>
-              <p class="card-text">The goals of the missions are varied: to grow food, to find a strategic
-                point, to eradicate aliens, etc... You may need just one
-                <em>Blupi</em> to accomplish the missions, or dozens !</p>
-              <span class="card-text">
-                <ul>
-                  <li>Help
-                    <em>Blupi</em> to explore</li>
-                  <li>Cut trees to produce boards and planks</li>
-                  <li>Transport various materials</li>
-                  <li>Build houses</li>
-                  <li>Grow tomatoes</li>
-                  <li>Pick flowers</li>
-                  <li>Survey the ground</li>
-                  <li>Extract iron ore</li>
-                  <li>Devise traps</li>
-                  <li>Throw bridges</li>
-                  <li>Cure friends</li>
-                </ul>
-              </span>
-            </div>
+        <div class="card-group">
+          <div class="card" style="max-width: 320px">
+            <img
+              class="card-img-top screen"
+              src="images/1.png"
+              alt="Card image cap"
+            />
           </div>
-        </div>
-        <div class="card" style="max-width: 320px;">
-          <img class="card-img-top screen" src="images/2.gif" alt="Card image cap">
-        </div>
-      </div>
-      <div class="card-group">
-        <div class="card" style="max-width: 320px;">
-          <img class="card-img-top screen" src="images/3.png" alt="Card image cap">
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="card-block">
-              <h3 class="card-title">A cool interface</h3>
-              <p class="card-text">
-                <em>Planet Blupi</em>'s interface is designed to remain as discreet as
-                possible, so you can have fun and concentrate on the game. There's
-                no need for long strokes across the screen with the mouse. You don't
-                waste time choosing buttons and artifacts from a large display somewhere
-                out of reach.</p>
-              <p class="card-text">A small zone on the left gives general information about the mission
-                in progress. When you want
-                <em>Blupi</em> to do a specific action, just click on the right spot
-                in the scenery. A palette of actions available pops up, and you can
-                make your choice. Actions are smooth and quick.</p>
-              <p class="card-text">A limited series of optional exercises can be used to learn how to
-                play the game.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-block">
-              <h3 class="card-title">A large selection of decors</h3>
-              <span class="card-text">
-                <em>Blupi</em>'s planet has 4 distinct areas :
-                <ul>
-                  <li>Open prairie</li>
-                  <li>Deep woods</li>
-                  <li>Desert</li>
-                  <li>Snowy landscape</li>
-                </ul>
-              </span>
-              <p class="card-text">Each mission is carried out in a vast area of 40'000 cells (200x200
-                square elements).</p>
-              <p class="card-text">You can even allow you to draw the scenery, set the goals and create
-                your own missions.</p>
-            </div>
-          </div>
-        </div>
-        <div class="card" style="max-width: 320px;">
-          <img class="card-img-top screen" src="images/4.png" alt="Card image cap">
-        </div>
-      </div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-block">
-              <h3 class="card-title">What's new since 1997</h3>
-              <p class="card-text">This new version (since v1.9) is directly based on the last public
-                release published in 1997. The rewrite was done in order to remove
-                completely the dependencies on
-                <em>MS Windows</em> and
-                <em>DirectX</em>. The old code is based on Visual Studio 5 (a very old
-                environment and compiler). This new version is based on the
-                <em>SDL2</em> libraries and supports at least three major operating systems
-                and is built only with
-                <em>GCC</em> or
-                <em>Clang</em>. The
-                <em>MSVC</em> toolchain is no longer supported because the dependencies
-                handling is more painful that using
-                <em>MSYS2</em> under
-                <em>Windows</em>.</p>
-              <div class="accordion" id="accordionChangelog">
-                <div class="card">
-                  <h4 class="card-title btn-link" type="button" data-toggle="collapse" data-target="#c1" aria-expanded="true" aria-controls="c1">ChangeLog v1.14</h4>
-                  <span id="c1" class="card-text collapse show" aria-labelledby="headingOne" data-parent="#accordionChangelog">
-                    <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                      <tr>
-                        <th scope="row" style="width: 1%">New</th>
-                        <td>Add Portuguese, Turkish and Hebrew translations</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Polish translations 100% completed</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Improve a bit the performances</td>
-                      </tr>
-                    </table>
-                  </span>
-                </div>
-                <div class="card">
-                  <h4 class="card-title btn-link" type="button" data-toggle="collapse" data-target="#c2" aria-expanded="true" aria-controls="c2">ChangeLog v1.13</h4>
-                  <span id="c2" class="card-text collapse" aria-labelledby="headingOne" data-parent="#accordionChangelog">
-                    <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                      <tr>
-                        <th scope="row" style="width: 1%">New</th>
-                        <td>Add wide screen support (it uses the desktop resolution with scaling)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add a new <tt>--legacy</tt> option for starting the game in 640x480 (original)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add more options to the global settings screen (legacy mode and anti-aliasing)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Mouse right click on flowers is working</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Use SDL_kitchensink 1.x that adds Android support for videos (maybe more)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add emscripten support (experimental online version of the game is available)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add a man page for Linux (see <tt>planetblupi/planetblupi.1.ronn</tt>)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix OpenGL ES2 support (very useful for Android support)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix glitch where a dead Blupi or enemy can be seen when the screen is moving</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Disable smooth screen scroll with demo recording and playing</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>It's no longer possible to build a mine without prospecting (see <tt>--restore-bugs</tt>)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix a lot of old bugs with mouse hovers</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix old bug where it was possible to save a game which was never played</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>When a Blupi or an enemy is killed by an explosion, the sound is stopped immediately (it was a common issue with a lot of gamers)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix the sound with the help panel (only on mouse up)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix the ALSA support when PulseAudio is not available (only on Linux)</td>
-                      </tr>
-                    </table>
-                  </span>
-                </div>
-                <div class="card">
-                  <h4 class="card-title btn-link" type="button" data-toggle="collapse" data-target="#c3" aria-expanded="true" aria-controls="c3">ChangeLog v1.12</h4>
-                  <span id="c3" class="card-text collapse" aria-labelledby="headingOne" data-parent="#accordionChangelog">
-                    <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                      <tr>
-                        <th scope="row" style="width: 1%">New</th>
-                        <td>When a game is paused (by ESC), pressing ESC again will return
-                          to the game instead of exiting (it prevents to lose your current
-                          game)
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add all Polish text translations (sounds still missing)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>The scrolling is smooth by default (like Blupimania), you can
-                          restore the previous behaviour by setting the mouse scrolling
-                          speed to 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Release for x86-32 version of Windows (>= Windows Vista)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Replace by default all midi music files by ogg/vorbis files (same
-                          music with all OS), it can be changed with the global settings
-                          screen
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>add a way to force an other driver for the renderer, see
-                          <tt>--driver</tt> option</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>The window zoom and the fullscreen mode is saved in the user
-                          preferences
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Improve support for multi-displays systems</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix a lot of buggy animations with the disciple (helper robot)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix buggy textures on macOS when the game is not loaded in fullscreen</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix paving stones goal with a number of blupi different of 4</td>
-                      </tr>
-                    </table>
-                  </span>
-                </div>
-                <div class="card">
-                  <h4 class="card-title btn-link" type="button" data-toggle="collapse" data-target="#c4" aria-expanded="true" aria-controls="c4">ChangeLog v1.11</h4>
-                  <span id="c4" class="card-text collapse" aria-labelledby="headingOne" data-parent="#accordionChangelog">
-                    <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                      <tr>
-                        <th scope="row" style="width: 1%">New</th>
-                        <td>Add full Italian language support</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix a regression with the difficult skill level (it was possible
-                          to win some missions without playing)</td>
-                      </tr>
-                    </table>
-                  </span>
-                </div>
-                <div class="card">
-                  <h4 class="card-title btn-link" type="button" data-toggle="collapse" data-target="#c5" aria-expanded="true" aria-controls="c5">ChangeLog v1.10</h4>
-                  <span id="c5" class="card-text collapse" aria-labelledby="headingOne" data-parent="#accordionChangelog">
-                    <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                      <tr>
-                        <th scope="row" style="width: 1%">New</th>
-                        <td>Add
-                          <tt>--zoom</tt> command line argument and
-                          <tt>config.json</tt> setting for running the game with the size
-                          window factor of 2 (when windowed)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Increase the difficulty for the
-                          <em>difficult</em> skill level, see
-                          <a href="https://github.com/blupi-games/planetblupi/issues/22" target="_">here</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix the bug where it was possible to carry a trapped enemy (see
-                          <tt>--restore-bugs</tt> option)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix editor bug where it was possible to have tower rays with
-                          all buildings (see
-                          <tt>--restore-bugs</tt> option)</td>
-                      </tr>
-                    </table>
-                  </span>
-                </div>
-                <div class="card">
-                  <h4 class="card-title btn-link" type="button" data-toggle="collapse" data-target="#c6" aria-expanded="true" aria-controls="c6">ChangeLog v1.9</h4>
-                  <span id="c6" class="card-text collapse" aria-labelledby="headingOne" data-parent="#accordionChangelog">
-                    <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                      <tr>
-                        <th scope="row" style="width: 1%">New</th>
-                        <td>Whole source-code and media files under GPL3+ license</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add support of
-                          <em>GNU/Linux</em> and
-                          <em>macOS</em>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add a partial support for recording a mission (see
-                          <tt>--help</tt> option)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Handle decor shifting with multiple keys (arrows)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Integrate all languages via gettext (no more separated executable
-                          by language)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add a checker for new versions (text update blinking on the home
-                          screen)
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Add a new global settings screen</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">New</th>
-                        <td>Use a static build (should work for years on all operating systems)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix cases where a Blupi can disappear</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix ghost Blupi, he can build a tower or a wall only if it's
-                          energy is at least greater or equal 1/2</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix bug where Blupi can enter in a workshop without action</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix energy leaking when Blupi is walking to build a tower or
-                          a wall</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix tooltip with the electro factory</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix the disciple when it's trying to block the electro factory</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix the bug of object duplicating (see
-                          <tt>--restore-bugs</tt> option)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix the bug where it's possible to take the control of an enemy
-                          (see
-                          <tt>--restore-bugs</tt> option)</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bug</th>
-                        <td>Fix a menu buttons bug with the factory</td>
-                      </tr>
-                    </table>
-                  </span>
-                </div>
-              </div>
-              <h4 class="card-title">For the next major release (v2+)</h4>
-              <p class="card-text">It's planned to have a major release with high definitions sprites
-                and cutscenes.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-group" id="downloads">
-      <div class="card">
-        <img class="card-img-top imgos" src="images/linux.png" alt="Card image cap">
-        <div class="card-body">
-          <div class="card-block">
-            <h4 class="card-title">GNU/Linux
-              <small>//</small>
-              <small>x86-64</small>
-            </h4>
-            <p>
-              <small>It should work on "all" GNU/Linux distributions.</small>
-            </p>
-            <p class="card-text">Standalone
-              <a href="http://appimage.org" target="_">AppImage</a> version, just
-              <a href="http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80" target="_">add the executable flag</a> and play.</p>
-            <p class="card-text">If you prefer, an official Debian package is available
-              <a href="https://packages.debian.org/unstable/planetblupi" target="_">here</a>. For Slackware, look at
-              <a href="https://slackbuilds.org" target="_">slackbuilds.org</a>.</p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi.AppImage"
-            class="btn btn-primary">
-            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top imgos" src="images/macos.png" alt="Card image cap">
-        <div class="card-body">
-          <div class="card-block">
-            <h4 class="card-title">macOS
-              <small>//</small>
-              <small>x86-64</small>
-            </h4>
-            <p>
-              <small>macOS &#x2265; 10.9.</small>
-            </p>
-            <p class="card-text">Open the DMG image, copy the game in the Applications directory or where
-              you want or execute directly from the image.
-            </p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2.dmg"
-            class="btn btn-primary">
-            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top imgos" src="images/windows.png" alt="Card image cap">
-        <div class="card-body">
-          <div class="card-block">
-            <h4 class="card-title">Windows
-              <small>//</small>
-              <small>x86</small>
-            </h4>
-            <p>
-              <small>Windows Vista, 7, 8, 8.1, 10, ...</small>
-            </p>
-            <p class="card-text">Windows version which can be installed with this
-              <a href="http://nsis.sourceforge.net" target="_">NSIS</a> installer. Just start the game with the shortcut installed
-              in you start menu.</p>
-            <p class="card-text">If possible, prefer the x86-64 version.</p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2.exe"
-              class="btn btn-primary">
-              <i class="fa fa-download" aria-hidden="true"></i> Download x86-64</a>
-            <a href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2-x86_32.exe"
-              class="btn btn-secondary">x86-32</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top imgos" src="images/emscripten.png" alt="Card image cap">
-        <div class="card-body">
-          <div class="card-block">
-            <h4 class="card-title">HTML
-              <small>//</small>
-              <small>js</small>
-            </h4>
-            <p>
-              <small>Mozilla Firefox, Google Chrome, ...</small>
-            </p>
-            <p class="card-text">Experimental online version compiled to
-              WebAssembly and JavaScript. The WebAssembly version is prefered
-              (faster). But on "older" web browsers, WebAssembly is
-              not supported and maybe the <tt>asm.js</tt> works fine.</p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="html/planetblupi.wasm.html"
-              class="btn btn-primary">WASM</a>
-            <a href="html/planetblupi.asmjs.html"
-              class="btn btn-secondary">asm.js</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-group">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-block">
-            <h3 class="card-title">Join the community</h3>
-            <p>The whole source-code and all media files are available on GitHub.</p>
-            <div class="card-group">
-              <div class="btn-group" role="group" aria-label="">
-                <a href="https://github.com/blupi-games" target="_">
-                  <button type="button" class="btn btn-secondary">
-                    <i class="fab fa-github" aria-hidden="true"></i> GitHub</button>
-                </a>&nbsp;
-                <a href="https://twitter.com/BlupiGames" target="_">
-                  <button type="button" class="btn btn-secondary">
-                    <i class="fab fa-twitter" aria-hidden="true"></i> Twitter</button>
-                </a>&nbsp;
-                <a href="https://www.facebook.com/BlupiGames" target="_">
-                  <button type="button" class="btn btn-secondary">
-                    <i class="fab fa-facebook" aria-hidden="true"></i> Facebook</button>
-                </a>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">Scenario</h3>
+                <p class="card-text">
+                  <em>Blupi</em> leads a quiet life on his planet until a
+                  strange meteorite crashes in a desert area.
+                </p>
+                <p class="card-text">
+                  Only much later does <em>Blupi</em> realise that his crops are
+                  being destroyed by huge spiders. Though he's always been a
+                  tough and healthy type, a weird virus has been causing him to
+                  sneeze and cough a lot lately. <br />What's going on ?
+                </p>
+                <p class="card-text">
+                  In fact, the meteorite is a spaceship. The only passenger on
+                  board is a mean-looking robot. Its goal is to build factories
+                  that produce a variety of aliens. Help <em>Blupi</em> use the
+                  resources of his beautiful planet to chase these invaders away
+                  !
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="card-body">
-          <div class="card-block">
-            <p>Feel free to donate something if you want. The money will be used for
-              paying the hosting, domains and the certificates for example. It's
-              not intended to be used for stuff unrelated to the Blupi games. (For
-              CoLoBoT, Buzzing Cars and Blupimania 2, please look at
-              <a href="https://colobot.info" target="_">colobot.info</a>)</p>
-            <form action="http://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value="G36RBNW7TV8R4">
-              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            </form>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">The game</h3>
+                <p class="card-text">
+                  There are some 30 missions to figure out, ranging from really
+                  easy to completely mind-boggling.
+                </p>
+                <p class="card-text">
+                  The goals of the missions are varied: to grow food, to find a
+                  strategic point, to eradicate aliens, etc... You may need just
+                  one <em>Blupi</em> to accomplish the missions, or dozens !
+                </p>
+                <span class="card-text">
+                  <ul>
+                    <li>Help <em>Blupi</em> to explore</li>
+                    <li>Cut trees to produce boards and planks</li>
+                    <li>Transport various materials</li>
+                    <li>Build houses</li>
+                    <li>Grow tomatoes</li>
+                    <li>Pick flowers</li>
+                    <li>Survey the ground</li>
+                    <li>Extract iron ore</li>
+                    <li>Devise traps</li>
+                    <li>Throw bridges</li>
+                    <li>Cure friends</li>
+                  </ul>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="max-width: 320px">
+            <img
+              class="card-img-top screen"
+              src="images/2.gif"
+              alt="Card image cap"
+            />
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card" style="max-width: 320px">
+            <img
+              class="card-img-top screen"
+              src="images/3.png"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">A cool interface</h3>
+                <p class="card-text">
+                  <em>Planet Blupi</em>'s interface is designed to remain as
+                  discreet as possible, so you can have fun and concentrate on
+                  the game. There's no need for long strokes across the screen
+                  with the mouse. You don't waste time choosing buttons and
+                  artifacts from a large display somewhere out of reach.
+                </p>
+                <p class="card-text">
+                  A small zone on the left gives general information about the
+                  mission in progress. When you want <em>Blupi</em> to do a
+                  specific action, just click on the right spot in the scenery.
+                  A palette of actions available pops up, and you can make your
+                  choice. Actions are smooth and quick.
+                </p>
+                <p class="card-text">
+                  A limited series of optional exercises can be used to learn
+                  how to play the game.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">A large selection of decors</h3>
+                <span class="card-text">
+                  <em>Blupi</em>'s planet has 4 distinct areas :
+                  <ul>
+                    <li>Open prairie</li>
+                    <li>Deep woods</li>
+                    <li>Desert</li>
+                    <li>Snowy landscape</li>
+                  </ul>
+                </span>
+                <p class="card-text">
+                  Each mission is carried out in a vast area of 40'000 cells
+                  (200x200 square elements).
+                </p>
+                <p class="card-text">
+                  You can even allow you to draw the scenery, set the goals and
+                  create your own missions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="max-width: 320px">
+            <img
+              class="card-img-top screen"
+              src="images/4.png"
+              alt="Card image cap"
+            />
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">What's new since 1997</h3>
+                <p class="card-text">
+                  This new version (since v1.9) is directly based on the last
+                  public release published in 1997. The rewrite was done in
+                  order to remove completely the dependencies on
+                  <em>MS Windows</em> and <em>DirectX</em>. The old code is
+                  based on Visual Studio 5 (a very old environment and
+                  compiler). This new version is based on the
+                  <em>SDL2</em> libraries and supports at least three major
+                  operating systems and is built only with <em>GCC</em> or
+                  <em>Clang</em>. The <em>MSVC</em> toolchain is no longer
+                  supported because the dependencies handling is more painful
+                  that using <em>MSYS2</em> under <em>Windows</em>.
+                </p>
+                <div class="accordion" id="accordionChangelog">
+                  <div class="card">
+                    <h4
+                      class="card-title btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#c1"
+                      aria-expanded="true"
+                      aria-controls="c1"
+                    >
+                      ChangeLog v1.14
+                    </h4>
+                    <span
+                      id="c1"
+                      class="card-text collapse show"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionChangelog"
+                    >
+                      <table
+                        class="table table-sm"
+                        style="width: 100%; margin-left: 3px"
+                      >
+                        <tr>
+                          <th scope="row" style="width: 1%">New</th>
+                          <td>
+                            Add Portuguese, Turkish and Hebrew translations
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>Polish translations 100% completed</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>Improve a bit the performances</td>
+                        </tr>
+                      </table>
+                    </span>
+                  </div>
+                  <div class="card">
+                    <h4
+                      class="card-title btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#c2"
+                      aria-expanded="true"
+                      aria-controls="c2"
+                    >
+                      ChangeLog v1.13
+                    </h4>
+                    <span
+                      id="c2"
+                      class="card-text collapse"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionChangelog"
+                    >
+                      <table
+                        class="table table-sm"
+                        style="width: 100%; margin-left: 3px"
+                      >
+                        <tr>
+                          <th scope="row" style="width: 1%">New</th>
+                          <td>
+                            Add wide screen support (it uses the desktop
+                            resolution with scaling)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add a new <tt>--legacy</tt> option for starting the
+                            game in 640x480 (original)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add more options to the global settings screen
+                            (legacy mode and anti-aliasing)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>Mouse right click on flowers is working</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Use SDL_kitchensink 1.x that adds Android support
+                            for videos (maybe more)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add emscripten support (experimental online version
+                            of the game is available)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add a man page for Linux (see
+                            <tt>planetblupi/planetblupi.1.ronn</tt>)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix OpenGL ES2 support (very useful for Android
+                            support)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix glitch where a dead Blupi or enemy can be seen
+                            when the screen is moving
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Disable smooth screen scroll with demo recording and
+                            playing
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            It's no longer possible to build a mine without
+                            prospecting (see <tt>--restore-bugs</tt>)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>Fix a lot of old bugs with mouse hovers</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix old bug where it was possible to save a game
+                            which was never played
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            When a Blupi or an enemy is killed by an explosion,
+                            the sound is stopped immediately (it was a common
+                            issue with a lot of gamers)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix the sound with the help panel (only on mouse up)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix the ALSA support when PulseAudio is not
+                            available (only on Linux)
+                          </td>
+                        </tr>
+                      </table>
+                    </span>
+                  </div>
+                  <div class="card">
+                    <h4
+                      class="card-title btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#c3"
+                      aria-expanded="true"
+                      aria-controls="c3"
+                    >
+                      ChangeLog v1.12
+                    </h4>
+                    <span
+                      id="c3"
+                      class="card-text collapse"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionChangelog"
+                    >
+                      <table
+                        class="table table-sm"
+                        style="width: 100%; margin-left: 3px"
+                      >
+                        <tr>
+                          <th scope="row" style="width: 1%">New</th>
+                          <td>
+                            When a game is paused (by ESC), pressing ESC again
+                            will return to the game instead of exiting (it
+                            prevents to lose your current game)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add all Polish text translations (sounds still
+                            missing)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            The scrolling is smooth by default (like
+                            Blupimania), you can restore the previous behaviour
+                            by setting the mouse scrolling speed to 3
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Release for x86-32 version of Windows (>= Windows
+                            Vista)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Replace by default all midi music files by
+                            ogg/vorbis files (same music with all OS), it can be
+                            changed with the global settings screen
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            add a way to force an other driver for the renderer,
+                            see <tt>--driver</tt> option
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            The window zoom and the fullscreen mode is saved in
+                            the user preferences
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>Improve support for multi-displays systems</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix a lot of buggy animations with the disciple
+                            (helper robot)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix buggy textures on macOS when the game is not
+                            loaded in fullscreen
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix paving stones goal with a number of blupi
+                            different of 4
+                          </td>
+                        </tr>
+                      </table>
+                    </span>
+                  </div>
+                  <div class="card">
+                    <h4
+                      class="card-title btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#c4"
+                      aria-expanded="true"
+                      aria-controls="c4"
+                    >
+                      ChangeLog v1.11
+                    </h4>
+                    <span
+                      id="c4"
+                      class="card-text collapse"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionChangelog"
+                    >
+                      <table
+                        class="table table-sm"
+                        style="width: 100%; margin-left: 3px"
+                      >
+                        <tr>
+                          <th scope="row" style="width: 1%">New</th>
+                          <td>Add full Italian language support</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix a regression with the difficult skill level (it
+                            was possible to win some missions without playing)
+                          </td>
+                        </tr>
+                      </table>
+                    </span>
+                  </div>
+                  <div class="card">
+                    <h4
+                      class="card-title btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#c5"
+                      aria-expanded="true"
+                      aria-controls="c5"
+                    >
+                      ChangeLog v1.10
+                    </h4>
+                    <span
+                      id="c5"
+                      class="card-text collapse"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionChangelog"
+                    >
+                      <table
+                        class="table table-sm"
+                        style="width: 100%; margin-left: 3px"
+                      >
+                        <tr>
+                          <th scope="row" style="width: 1%">New</th>
+                          <td>
+                            Add <tt>--zoom</tt> command line argument and
+                            <tt>config.json</tt> setting for running the game
+                            with the size window factor of 2 (when windowed)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Increase the difficulty for the
+                            <em>difficult</em> skill level, see
+                            <a
+                              href="https://github.com/blupi-games/planetblupi/issues/22"
+                              target="_"
+                              >here</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix the bug where it was possible to carry a trapped
+                            enemy (see <tt>--restore-bugs</tt> option)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix editor bug where it was possible to have tower
+                            rays with all buildings (see
+                            <tt>--restore-bugs</tt> option)
+                          </td>
+                        </tr>
+                      </table>
+                    </span>
+                  </div>
+                  <div class="card">
+                    <h4
+                      class="card-title btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#c6"
+                      aria-expanded="true"
+                      aria-controls="c6"
+                    >
+                      ChangeLog v1.9
+                    </h4>
+                    <span
+                      id="c6"
+                      class="card-text collapse"
+                      aria-labelledby="headingOne"
+                      data-parent="#accordionChangelog"
+                    >
+                      <table
+                        class="table table-sm"
+                        style="width: 100%; margin-left: 3px"
+                      >
+                        <tr>
+                          <th scope="row" style="width: 1%">New</th>
+                          <td>
+                            Whole source-code and media files under GPL3+
+                            license
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add support of <em>GNU/Linux</em> and
+                            <em>macOS</em>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add a partial support for recording a mission (see
+                            <tt>--help</tt> option)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Handle decor shifting with multiple keys (arrows)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Integrate all languages via gettext (no more
+                            separated executable by language)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Add a checker for new versions (text update blinking
+                            on the home screen)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>Add a new global settings screen</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">New</th>
+                          <td>
+                            Use a static build (should work for years on all
+                            operating systems)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>Fix cases where a Blupi can disappear</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix ghost Blupi, he can build a tower or a wall only
+                            if it's energy is at least greater or equal 1/2
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix bug where Blupi can enter in a workshop without
+                            action
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix energy leaking when Blupi is walking to build a
+                            tower or a wall
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>Fix tooltip with the electro factory</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix the disciple when it's trying to block the
+                            electro factory
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix the bug of object duplicating (see
+                            <tt>--restore-bugs</tt> option)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>
+                            Fix the bug where it's possible to take the control
+                            of an enemy (see <tt>--restore-bugs</tt> option)
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bug</th>
+                          <td>Fix a menu buttons bug with the factory</td>
+                        </tr>
+                      </table>
+                    </span>
+                  </div>
+                </div>
+                <h4 class="card-title">For the next major release (v2+)</h4>
+                <p class="card-text">
+                  It's planned to have a major release with high definitions
+                  sprites and cutscenes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-group" id="downloads">
+          <div class="card">
+            <img
+              class="card-img-top imgos"
+              src="images/linux.png"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <div class="card-block">
+                <h4 class="card-title">
+                  GNU/Linux
+                  <small>//</small>
+                  <small>x86-64</small>
+                </h4>
+                <p>
+                  <small
+                    >It should work on "all" GNU/Linux distributions.</small
+                  >
+                </p>
+                <p class="card-text">
+                  Standalone
+                  <a href="http://appimage.org" target="_">AppImage</a> version,
+                  just
+                  <a
+                    href="http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80"
+                    target="_"
+                    >add the executable flag</a
+                  >
+                  and play.
+                </p>
+                <p class="card-text">
+                  If you prefer, an official Debian package is available
+                  <a
+                    href="https://packages.debian.org/unstable/planetblupi"
+                    target="_"
+                    >here</a
+                  >. For Slackware, look at
+                  <a href="https://slackbuilds.org" target="_"
+                    >slackbuilds.org</a
+                  >.
+                </p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi.AppImage"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-download" aria-hidden="true"></i> Download</a
+              >
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card-img-top imgos"
+              src="images/macos.png"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <div class="card-block">
+                <h4 class="card-title">
+                  macOS
+                  <small>//</small>
+                  <small>x86-64</small>
+                </h4>
+                <p>
+                  <small>macOS &#x2265; 10.9.</small>
+                </p>
+                <p class="card-text">
+                  Open the DMG image, copy the game in the Applications
+                  directory or where you want or execute directly from the
+                  image.
+                </p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2.dmg"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-download" aria-hidden="true"></i> Download</a
+              >
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card-img-top imgos"
+              src="images/windows.png"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <div class="card-block">
+                <h4 class="card-title">
+                  Windows
+                  <small>//</small>
+                  <small>x86</small>
+                </h4>
+                <p>
+                  <small>Windows Vista, 7, 8, 8.1, 10, ...</small>
+                </p>
+                <p class="card-text">
+                  Windows version which can be installed with this
+                  <a href="http://nsis.sourceforge.net" target="_">NSIS</a>
+                  installer. Just start the game with the shortcut installed in
+                  you start menu.
+                </p>
+                <p class="card-text">If possible, prefer the x86-64 version.</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a
+                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2.exe"
+                  class="btn btn-primary"
+                >
+                  <i class="fa fa-download" aria-hidden="true"></i> Download
+                  x86-64</a
+                >
+                <a
+                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2-x86_32.exe"
+                  class="btn btn-secondary"
+                  >x86-32</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card-img-top imgos"
+              src="images/emscripten.png"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <div class="card-block">
+                <h4 class="card-title">
+                  HTML
+                  <small>//</small>
+                  <small>js</small>
+                </h4>
+                <p>
+                  <small>Mozilla Firefox, Google Chrome, ...</small>
+                </p>
+                <p class="card-text">
+                  Experimental online version compiled to WebAssembly and
+                  JavaScript. The WebAssembly version is prefered (faster). But
+                  on "older" web browsers, WebAssembly is not supported and
+                  maybe the <tt>asm.js</tt> works fine.
+                </p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="html/planetblupi.wasm.html" class="btn btn-primary"
+                  >WASM</a
+                >
+                <a href="html/planetblupi.asmjs.html" class="btn btn-secondary"
+                  >asm.js</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">Join the community</h3>
+                <p>
+                  The whole source-code and all media files are available on
+                  GitHub.
+                </p>
+                <div class="card-group">
+                  <div class="btn-group" role="group" aria-label="">
+                    <a href="https://github.com/blupi-games" target="_">
+                      <button type="button" class="btn btn-secondary">
+                        <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                      </button> </a
+                    >&nbsp;
+                    <a rel="me" href="https://tooting.ch/@BlupiGames" target="_"
+                      ><button type="button" class="btn btn-secondary">
+                        <i class="fab fa-mastodon" aria-hidden="true"></i>
+                        Mastodon
+                      </button></a
+                    >&nbsp;
+                    <a href="https://www.facebook.com/BlupiGames" target="_">
+                      <button type="button" class="btn btn-secondary">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                        Facebook
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-block">
+                <p>
+                  Feel free to donate something if you want. The money will be
+                  used for paying the hosting, domains and the certificates for
+                  example. It's not intended to be used for stuff unrelated to
+                  the Blupi games. (For CoLoBoT, Buzzing Cars and Blupimania 2,
+                  please look at
+                  <a href="https://colobot.info" target="_">colobot.info</a>)
+                </p>
+                <form
+                  action="http://www.paypal.com/cgi-bin/webscr"
+                  method="post"
+                  target="_top"
+                >
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input
+                    type="hidden"
+                    name="hosted_button_id"
+                    value="G36RBNW7TV8R4"
+                  />
+                  <input
+                    type="image"
+                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                    border="0"
+                    name="submit"
+                    alt="PayPal - The safer, easier way to pay online!"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <h3 class="card-title">Copyrights</h3>
+                <p>
+                  <em>Planet Blupi</em> and all resource files are licensed to
+                  the GPLv3+ license.
+                </p>
+                <p>
+                  This game is an original creation of
+                  <a href="https://www.epsitec.ch" target="_">Epsitec SA</a> and
+                  Daniel Roux.
+                </p>
+                <table class="table" style="width: 100%">
+                  <tr>
+                    <th scope="row" rowspan="2" style="width: 1%">
+                      Developers
+                    </th>
+                    <th scope="row" style="min-width: 120px">1997</th>
+                    <td>Daniel Roux and Denis Dumoulin</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2017-2019</th>
+                    <td>Mathieu Schroeter</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Voices</th>
+                    <th scope="row">1997</th>
+                    <td>
+                      Daniel Roux, David Besuchet, Michael Walz and Garry
+                      Goodman
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" rowspan="4">Translators</th>
+                    <th scope="row">1997</th>
+                    <td>
+                      Christian Alleyn, Michael Walz, David Besuchet, Cedric
+                      Freeman, Adrienne Magnin and Wendy de Pauli
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2005</th>
+                    <td>
+                      Rodolfo Andrade de Oliveira and Vanessa Alexandre Vieira
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2017</th>
+                    <td>Catia Guidi and Mateusz Lis</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2019</th>
+                    <td>
+                      <a href="https://github.com/punctdan" target="_blank"
+                        >punctdan</a
+                      >,
+                      <a href="https://twitter.com/TShwarma" target="_blank"
+                        >TheShwarma</a
+                      >
+                      and
+                      <a href="https://github.com/BLooperZ" target="_blank"
+                        >BLooperZ</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Missions</th>
+                    <th scopre="row">1997</th>
+                    <td>Daniel Roux, Adrien Roux and Denis Dumoulin</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Testers</th>
+                    <th scope="row">1997</th>
+                    <td>
+                      Denis Dumoulin, Adrien Roux, Michael Walz, René Beuchat,
+                      Pierre Arnaud, Michèle Cottler, Arnaud Cottler, Daniel
+                      Durussel, Audrey Durussel, Laurianne Durussel, Philippe
+                      Menu, Michael Bloch, Florian Stutzmann, Fabrice Bodmer,
+                      Rachel Besuchet, Pauline Rochat, Antoine Richoy, Fabrice
+                      Marquis, Steve Guex, Simon Lopez, David Piot, Yves Burgos
+                      and Jeremy Kull
+                    </td>
+                  </tr>
+                </table>
+                <h4>List of statically linked libraries</h4>
+                <span>
+                  <table
+                    class="table table-sm"
+                    style="width: 100%; margin-left: 3px"
+                  >
+                    <tr>
+                      <th scope="row" style="width: 140px">
+                        <a
+                          target="_"
+                          href="https://github.com/vietjtnguyen/argagg"
+                          >argagg</a
+                        >
+                      </th>
+                      <td style="width: 130px">MIT</td>
+                      <td>simple C++11 command line argument parser</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://www.ffmpeg.org/">FFmpeg</a>
+                      </th>
+                      <td>LGPLv2.1</td>
+                      <td>
+                        complete, cross-platform solution to record, convert and
+                        stream audio and video
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        GNU/
+                        <a
+                          target="_"
+                          href="https://www.gnu.org/software/gettext/"
+                          >gettext</a
+                        >
+                      </th>
+                      <td>GPLv3</td>
+                      <td>
+                        an i18n and l10n system commonly used for writing
+                        multilingual programs
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://www.alsa-project.org"
+                          >libasound</a
+                        >
+                      </th>
+                      <td>LGPLv2.1</td>
+                      <td>
+                        provides audio and MIDI functionality to the Linux
+                        operating system
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://curl.haxx.se/libcurl/"
+                          >libcurl</a
+                        >
+                      </th>
+                      <td>MIT/X derivate</td>
+                      <td>
+                        a free and easy-to-use client-side URL transfer library
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        GNU/
+                        <a
+                          target="_"
+                          href="https://www.gnu.org/software/libiconv/"
+                          >libiconv</a
+                        >
+                      </th>
+                      <td>GPLv3</td>
+                      <td>
+                        a standardized API used to convert between different
+                        character encodings
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://xiph.org/downloads/"
+                          >libogg</a
+                        >
+                      </th>
+                      <td>own license</td>
+                      <td>
+                        a free, open container format maintained by the Xiph.Org
+                        Foundation
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a
+                          target="_"
+                          href="http://www.libpng.org/pub/png/libpng.html"
+                          >libpng</a
+                        >
+                      </th>
+                      <td>own license</td>
+                      <td>the official PNG reference library</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a
+                          target="_"
+                          href="https://freedesktop.org/software/pulseaudio/doxygen/"
+                          >libpulse</a
+                        >
+                      </th>
+                      <td>LGPLv2.1</td>
+                      <td>
+                        API for the PulseAudio network-capable sound server
+                        program
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a
+                          target="_"
+                          href="http://www.mega-nerd.com/libsndfile/"
+                          >libsndfile</a
+                        >
+                      </th>
+                      <td>LGPLv3</td>
+                      <td>
+                        a C library for reading and writing files containing
+                        sampled sound
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://xiph.org/downloads/"
+                          >libvorbis</a
+                        >
+                      </th>
+                      <td>own license</td>
+                      <td>
+                        a free and open-source software project headed by the
+                        Xiph.Org Foundation
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a
+                          target="_"
+                          href="https://github.com/katajakasa/SDL_kitchensink"
+                          >SDL_kitchensink</a
+                        >
+                      </th>
+                      <td>MIT</td>
+                      <td>
+                        Simple SDL2 / FFmpeg library for audio/video playback
+                        written in C99
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://www.libsdl.org">SDL2</a>
+                      </th>
+                      <td>zlib license</td>
+                      <td>
+                        a cross-platform software library designed to provide a
+                        HAL to computer multimedia hardware
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a
+                          target="_"
+                          href="https://www.libsdl.org/projects/SDL_image/"
+                          >SDL2_image</a
+                        >
+                      </th>
+                      <td>zlib license</td>
+                      <td>
+                        an image loading library that is used with the SDL
+                        library
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a
+                          target="_"
+                          href="https://www.libsdl.org/projects/SDL_mixer/"
+                          >SDL2_mixer</a
+                        >
+                      </th>
+                      <td>zlib license</td>
+                      <td>
+                        a sound mixing library that is used with the SDL library
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <a target="_" href="https://zlib.net/">zlib</a>
+                      </th>
+                      <td>own license</td>
+                      <td>
+                        a Massively Spiffy Yet Delicately Unobtrusive
+                        Compression Library
+                      </td>
+                    </tr>
+                  </table>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="bottom">&nbsp;</div>
     </div>
-    <div class="card-group">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-block">
-            <h3 class="card-title">Copyrights</h3>
-            <p>
-              <em>Planet Blupi</em> and all resource files are licensed to the GPLv3+
-              license.
-            </p>
-            <p>This game is an original creation of
-              <a href="https://www.epsitec.ch" target="_">Epsitec SA</a> and Daniel Roux.</p>
-            <table class="table" style="width: 100%">
-              <tr>
-                <th scope="row" rowspan="2" style="width: 1%">Developers</th>
-                <th scope="row" style="min-width: 120px">1997</th>
-                <td>Daniel Roux and Denis Dumoulin</td>
-              </tr>
-              <tr>
-                <th scope="row">2017-2019</th>
-                <td>Mathieu Schroeter</td>
-              </tr>
-              <tr>
-                <th scope="row">Voices</th>
-                <th scope="row">1997</th>
-                <td>Daniel Roux, David Besuchet, Michael Walz and Garry Goodman</td>
-              </tr>
-              <tr>
-                <th scope="row" rowspan="4">Translators</th>
-                <th scope="row">1997</th>
-                <td>Christian Alleyn, Michael Walz, David Besuchet, Cedric Freeman, Adrienne
-                  Magnin and Wendy de Pauli</td>
-              </tr>
-              <tr>
-                <th scope="row">2005</th>
-                <td>Rodolfo Andrade de Oliveira and Vanessa Alexandre Vieira</td>
-              </tr>
-              <tr>
-                <th scope="row">2017</th>
-                <td>Catia Guidi and Mateusz Lis</td>
-              </tr>
-              <tr>
-                <th scope="row">2019</th>
-                <td>
-                  <a href="https://github.com/punctdan" target="_blank">punctdan</a>,
-                  <a href="https://twitter.com/TShwarma" target="_blank">TheShwarma</a> and
-                  <a href="https://github.com/BLooperZ" target="_blank">BLooperZ</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Missions</th>
-                <th scopre="row">1997</th>
-                <td>Daniel Roux, Adrien Roux and Denis Dumoulin</td>
-              </tr>
-              <tr>
-                <th scope="row">Testers</th>
-                <th scope="row">1997</th>
-                <td>Denis Dumoulin, Adrien Roux, Michael Walz, René Beuchat, Pierre Arnaud,
-                  Michèle Cottler, Arnaud Cottler, Daniel Durussel, Audrey Durussel,
-                  Laurianne Durussel, Philippe Menu, Michael Bloch, Florian Stutzmann,
-                  Fabrice Bodmer, Rachel Besuchet, Pauline Rochat, Antoine Richoy,
-                  Fabrice Marquis, Steve Guex, Simon Lopez, David Piot, Yves Burgos
-                  and Jeremy Kull</td>
-              </tr>
-            </table>
-            <h4>List of statically linked libraries</h4>
-            <span>
-              <table class="table table-sm" style="width: 100%; margin-left: 3px">
-                <tr>
-                  <th scope="row" style="width: 140px">
-                    <a target="_" href="https://github.com/vietjtnguyen/argagg">argagg</a>
-                  </th>
-                  <td style="width: 130px">MIT</td>
-                  <td>simple C++11 command line argument parser</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://www.ffmpeg.org/">FFmpeg</a>
-                  </th>
-                  <td>LGPLv2.1</td>
-                  <td>complete, cross-platform solution to record, convert and stream
-                    audio and video</td>
-                </tr>
-                <tr>
-                  <th scope="row">GNU/
-                    <a target="_" href="https://www.gnu.org/software/gettext/">gettext</a>
-                  </th>
-                  <td>GPLv3</td>
-                  <td>an i18n and l10n system commonly used for writing multilingual
-                    programs
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://www.alsa-project.org">libasound</a>
-                  </th>
-                  <td>LGPLv2.1</td>
-                  <td>provides audio and MIDI functionality to the Linux operating system</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://curl.haxx.se/libcurl/">libcurl</a>
-                  </th>
-                  <td>MIT/X derivate</td>
-                  <td>a free and easy-to-use client-side URL transfer library</td>
-                </tr>
-                <tr>
-                  <th scope="row">GNU/
-                    <a target="_" href="https://www.gnu.org/software/libiconv/">libiconv</a>
-                  </th>
-                  <td>GPLv3</td>
-                  <td>a standardized API used to convert between different character
-                    encodings
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://xiph.org/downloads/">libogg</a>
-                  </th>
-                  <td>own license</td>
-                  <td>a free, open container format maintained by the Xiph.Org Foundation</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="http://www.libpng.org/pub/png/libpng.html">libpng</a>
-                  </th>
-                  <td>own license</td>
-                  <td>the official PNG reference library</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://freedesktop.org/software/pulseaudio/doxygen/">libpulse</a>
-                  </th>
-                  <td>LGPLv2.1</td>
-                  <td>API for the PulseAudio network-capable sound server program</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>
-                  </th>
-                  <td>LGPLv3</td>
-                  <td>a C library for reading and writing files containing sampled sound</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://xiph.org/downloads/">libvorbis</a>
-                  </th>
-                  <td>own license</td>
-                  <td>a free and open-source software project headed by the Xiph.Org
-                    Foundation
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://github.com/katajakasa/SDL_kitchensink">SDL_kitchensink</a>
-                  </th>
-                  <td>MIT</td>
-                  <td>Simple SDL2 / FFmpeg library for audio/video playback written in
-                    C99
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://www.libsdl.org">SDL2</a>
-                  </th>
-                  <td>zlib license</td>
-                  <td>a cross-platform software library designed to provide a HAL to
-                    computer multimedia hardware</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://www.libsdl.org/projects/SDL_image/">SDL2_image</a>
-                  </th>
-                  <td>zlib license</td>
-                  <td>an image loading library that is used with the SDL library</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://www.libsdl.org/projects/SDL_mixer/">SDL2_mixer</a>
-                  </th>
-                  <td>zlib license</td>
-                  <td>a sound mixing library that is used with the SDL library</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <a target="_" href="https://zlib.net/">zlib</a>
-                  </th>
-                  <td>own license</td>
-                  <td>a Massively Spiffy Yet Delicately Unobtrusive Compression Library</td>
-                </tr>
-              </table>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bottom">&nbsp;</div>
-  </div>
-</body>
-
+  </body>
 </html>
