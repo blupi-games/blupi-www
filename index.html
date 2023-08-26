@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Blupi / Eggbert Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -11,23 +17,23 @@
     />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-      integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+      integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
     <script>
@@ -51,6 +57,11 @@
         overflow-y: auto;
         overflow-x: hidden;
         margin: 0;
+        font-family: "Ubuntu";
+      }
+
+      tt {
+        font-family: "Ubuntu Mono";
       }
 
       body {
@@ -90,6 +101,7 @@
         margin-top: 5px;
         margin-bottom: 5px;
         min-width: 15em;
+        border: none;
       }
 
       .card-img-top {
@@ -115,15 +127,15 @@
 
       @keyframes highlight {
         0% {
-          background: #ddd;
+          background: #eee;
         }
         100% {
-          background: #fff;
+          background: #ddd;
         }
       }
 
       .imgbase:hover {
-        animation: highlight 1s;
+        animation: highlight 1s alternate-reverse infinite;
       }
 
       .imgos {
@@ -152,7 +164,7 @@
 
       .pop {
         cursor: default;
-        color: #8fa8c3;
+        color: #b4d3f3;
       }
 
       th {
@@ -196,7 +208,7 @@
         <h1 style="color: white">
           Blupi Games <span style="font-size: 40%">(Eggbert Games)</span>
         </h1>
-        <div class="card-group">
+        <div class="card-group" style="cursor: pointer">
           <div class="card imgbase">
             <a class="imgos" href="/planet/index.html"
               ><img
@@ -214,7 +226,8 @@
                 <span style="font-size: 40%">(Planet Eggbert)</span>
               </h2>
               <p>
-                Official version (open-source)<br />
+                Official version (open-source)<br />Version officielle (code
+                source ouvert) <br />
                 <img style="margin-right: 3px" src="images/en.png" />
                 <img style="margin-right: 3px" src="images/en_US.png" />
                 <img style="margin-right: 3px" src="images/fr.png" />
@@ -242,7 +255,8 @@
             >
               <h2 class="card-title">CoLoBoT</h2>
               <p>
-                Official version by TerranovaTeam (open-source)<br />
+                Official version by TerranovaTeam (open-source)<br />Version
+                officielle par TerranovaTeam (code source ouvert)<br />
                 <img style="margin-right: 3px" src="images/en.png" />
                 <img style="margin-right: 3px" src="images/fr.png" />
                 <img style="margin-right: 3px" src="images/de.png" />
@@ -254,9 +268,18 @@
           </div>
         </div>
         <div class="card-group">
+          <div class="card" style="max-width: 180px; min-width: 180px">
+            <img
+              class="card-img-top screen"
+              src="images/smaky.png"
+              alt="Smaky"
+            />
+          </div>
           <div class="card">
             <div class="card-body">
-              <h2 class="card-title">About</h2>
+              <h2 class="card-title">
+                <img style="margin-right: 6px" src="images/en.png" />About
+              </h2>
               <p>Official website for all Epsitec SA games.</p>
               <p>
                 <b>Is it really free? Seriously?</b><br />
@@ -287,68 +310,185 @@
                 by one employee which is working on the games as hobbyist.
                 Nothing new about the game is done under the Epsitec SA name.
               </p>
-              <div
-                class="card-group"
-                style="margin-top: 10px; margin-bottom: 10px"
-              >
-                <div class="btn-group" role="group" aria-label="">
-                  <a href="https://github.com/blupi-games" target="_"
-                    ><button type="button" class="btn btn-secondary">
-                      <i class="fab fa-github" aria-hidden="true"></i> GitHub
-                    </button></a
-                  >&nbsp;
-                  <a rel="me" href="https://tooting.ch/@BlupiGames" target="_"
-                    ><button type="button" class="btn btn-secondary">
-                      <i class="fab fa-mastodon" aria-hidden="true"></i>
-                      Mastodon
-                    </button></a
-                  >&nbsp;
-                  <a href="https://twitter.com/BlupiGames" target="_"
-                    ><button type="button" class="btn btn-secondary">
-                      <i class="fab fa-twitter" aria-hidden="true"></i> Twitter
-                    </button></a
-                  >&nbsp;
-                  <a href="https://www.facebook.com/BlupiGames" target="_"
-                    ><button type="button" class="btn btn-secondary">
-                      <i class="fab fa-facebook" aria-hidden="true"></i>
-                      Facebook
-                    </button></a
-                  >
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">
+                <img style="margin-right: 6px" src="images/fr.png" />A propos
+              </h2>
+              <p>Site internet officiel pour tous les jeux Epsitec SA.</p>
+              <p>
+                <b>Est-ce vraiment gratuit ? Sérieusement ?</b><br />
+                Oui, tous les jeux peuvent être téléchargés librement. C'est
+                officiel et légal. Le code-source est également disponible avec
+                quelques jeux, voir cette
+                <a
+                  href="https://github.com/colobot/colobot/issues/896"
+                  target="_"
+                  >discussion</a
+                >.
+              </p>
+              <p>
+                Vous devriez télécharger en priorité les versions proposées au
+                sommet de cette page internet, au lieu de les prendre dans la
+                section des <em>archives</em>. Le jeu CoLoBoT est activement
+                développé par
+                <a href="https://colobot.info/terranovateam/" target="_"
+                  >TerranovaTeam</a
+                >. Ce jeu n'est plus maintenu par Epsitec SA depuis 2014. Notez
+                aussi que cette équipe possède les dépôts de code-source
+                principaux des jeux Buzzing Cars et Blupimania 2. Aucune
+                publication n'est disponible pour ces deux jeux, alors dans ce
+                cas il est tout à fait sensé de continuer à les télécharger
+                depuis la section des archives.
+              </p>
+              <p>
+                Concernant Planète Blupi, c'est un petit peu différent. Les
+                dépôts de code-source officiels ne sont pas vraiment sous la
+                responsabilité d'Epsitec SA, mais uniquement à la charge d'un
+                employé de l'entreprise qui travail sur ces jeux comme passionné
+                (hobbyiste). Rien de nouveau n'est réalisé pour des jeux au nom
+                d'Epsitec SA.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <p>
+                  <img style="margin-right: 6px" src="images/en.png" />
+                  Feel free to donate something if you want. The money will be
+                  used for paying the hosting, domains and the certificates for
+                  example. It's not intended to be used for stuff unrelated to
+                  the Blupi games. (For CoLoBoT, Buzzing Cars and Blupimania 2,
+                  please look at
+                  <a href="https://colobot.info" target="_">colobot.info</a>)
+                </p>
+                <form
+                  action="http://www.paypal.com/cgi-bin/webscr"
+                  method="post"
+                  target="_top"
+                >
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input
+                    type="hidden"
+                    name="hosted_button_id"
+                    value="G36RBNW7TV8R4"
+                  />
+                  <input
+                    type="image"
+                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                    border="0"
+                    name="submit"
+                    alt="PayPal - The safer, easier way to pay online!"
+                  />
+                </form>
+                <p>
+                  Epsitec SA remains the owner of <em>Colobot</em>,
+                  <em>CeeBot</em>, <em>BuzzingCars</em> and
+                  <em>Blupi</em> names. Daniel Roux is the father of Blupi and
+                  all games.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-block">
+                <p>
+                  <img style="margin-right: 6px" src="images/fr.png" />
+                  Libre à vous de donner quelques sous si vous le souhaitez.
+                  L'argent sera utilisé, par exemple, pour financer
+                  l'hébergement, les noms de domaines et les certificats. Cet
+                  argent n'est en aucun cas utilisé pour autre chose que ce qui
+                  concerne les jeux Blupi. (Concernant CoLoBoT, Buzzing Cars et
+                  Blupimania 2, je vous invite à vous référer à
+                  <a href="https://colobot.info" target="_">colobot.info</a>)
+                </p>
+                <form
+                  action="http://www.paypal.com/cgi-bin/webscr"
+                  method="post"
+                  target="_top"
+                >
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input
+                    type="hidden"
+                    name="hosted_button_id"
+                    value="G36RBNW7TV8R4"
+                  />
+                  <input
+                    type="image"
+                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                    border="0"
+                    name="submit"
+                    alt="PayPal - The safer, easier way to pay online!"
+                  />
+                </form>
+                <p>
+                  Epsitec SA reste le propriétaire des noms <em>Colobot</em>,
+                  <em>CeeBot</em>, <em>BuzzingCars</em> et <em>Blupi</em>.
+                  Daniel Roux est le père de Blupi et de tous les jeux.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="min-width: 200px; max-width: 200px">
+            <div class="card-body">
+              <div class="card-block">
+                <div class="card-group">
+                  <div class="btn-group-vertical" role="group" aria-label="">
+                    <a href="https://github.com/blupi-games" target="_">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        style="width: 150px; margin-bottom: 5px"
+                      >
+                        <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                      </button>
+                    </a>
+                    <a rel="me" href="https://tooting.ch/@BlupiGames" target="_"
+                      ><button
+                        type="button"
+                        class="btn btn-secondary"
+                        style="width: 150px; margin-bottom: 5px"
+                      >
+                        <i class="fab fa-mastodon" aria-hidden="true"></i>
+                        Mastodon
+                      </button></a
+                    >
+                    <a href="https://twitter.com/BlupiGames" target="_"
+                      ><button
+                        type="button"
+                        class="btn btn-secondary"
+                        style="width: 150px; margin-bottom: 5px"
+                      >
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                        Twitter
+                      </button></a
+                    >
+                    <a href="https://www.facebook.com/BlupiGames" target="_">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        style="width: 150px; margin-bottom: 5px"
+                      >
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                        Facebook
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
-              <p>
-                Feel free to donate something if you want. The money will be
-                used for paying the hosting, domains and the certificates for
-                example. It's not intended to be used for stuff unrelated to the
-                Blupi games. (For CoLoBoT, Buzzing Cars and Blupimania 2, please
-                look at
-                <a href="https://colobot.info" target="_">colobot.info</a>)
-              </p>
-              <form
-                action="http://www.paypal.com/cgi-bin/webscr"
-                method="post"
-                target="_top"
-              >
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input
-                  type="hidden"
-                  name="hosted_button_id"
-                  value="G36RBNW7TV8R4"
-                />
-                <input
-                  type="image"
-                  src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                  border="0"
-                  name="submit"
-                  alt="PayPal - The safer, easier way to pay online!"
-                />
-              </form>
-              <p>
-                Epsitec SA remains the owner of <em>Colobot</em>,
-                <em>CeeBot</em>, <em>BuzzingCars</em> and <em>Blupi</em> names.
-                Daniel Roux is the father of Blupi and all games.
-              </p>
-              <h3 class="card-title">Some links</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Some links / Quelques liens</h3>
               <span>
                 <table
                   class="table table-sm"
@@ -360,13 +500,25 @@
                         >ManiaBricks</a
                       >
                     </th>
-                    <td>The personal website of Daniel Roux</td>
+                    <td>
+                      <img style="margin-right: 6px" src="images/en.png" />The
+                      personal website of Daniel Roux<br /><img
+                        style="margin-right: 6px"
+                        src="images/fr.png"
+                      />The site internet personnel de Daniel Roux
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row" style="width: 180px">
                       <a target="_" href="http://www.ceebot.com/">CeeBot</a>
                     </th>
-                    <td>The legacy website for the Epsitec SA Games</td>
+                    <td>
+                      <img style="margin-right: 6px" src="images/en.png" />The
+                      legacy website for the Epsitec SA Games<br /><img
+                        style="margin-right: 6px"
+                        src="images/fr.png"
+                      />L'ancien site internet dédié au jeux d'Epsitec SA
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row" style="width: 180px">
@@ -381,13 +533,13 @@
                       >
                     </th>
                     <td>
-                      The dedicated
-                      <img
-                        style="margin-bottom: 3px"
-                        height="12px"
+                      <img style="margin-right: 6px" src="images/en.png" />
+                      The dedicated, french, Wikipedia pages for Blupi and
+                      Planet Blupi<br /><img
+                        style="margin-right: 6px"
                         src="images/fr.png"
-                      />
-                      Wikipedia pages for Blupi and Planet Blupi
+                      />Les pages francophones de Wikipedia, dédiées à Blupi et
+                      Planète Blupi
                     </td>
                   </tr>
                   <tr>
@@ -399,13 +551,11 @@
                       >
                     </th>
                     <td>
-                      The dedicated
-                      <img
-                        style="margin-bottom: 3px"
-                        height="12px"
-                        src="images/en.png"
-                      />
-                      Wikipedia page for Speedy Eggbert
+                      <img style="margin-right: 6px" src="images/en.png" />
+                      The dedicated Wikipedia page for Speedy Eggbert<br /><img
+                        style="margin-right: 6px"
+                        src="images/fr.png"
+                      />La page anglophone de Wikipedia, dédiée à Speedy Blupi
                     </td>
                   </tr>
                   <tr>
@@ -417,13 +567,13 @@
                       </a>
                     </th>
                     <td>
-                      Video on the Blupi history with its author (Daniel Roux)
-                      in
-                      <img
-                        style="margin-bottom: 3px"
-                        height="12px"
+                      <img style="margin-right: 6px" src="images/en.png" />A
+                      french video on the Blupi history with its author (Daniel
+                      Roux)<br /><img
+                        style="margin-right: 6px"
                         src="images/fr.png"
-                      />
+                      />Une vidéo retracant l'histoire de Blupi avec son auteur
+                      (Daniel Roux)
                     </td>
                   </tr>
                   <tr>
@@ -433,8 +583,13 @@
                       </a>
                     </th>
                     <td>
-                      The Smaky emulator that you can use to play the first
-                      Blupi games (and a lot more)
+                      <img style="margin-right: 6px" src="images/en.png" />The
+                      Smaky emulator that you can use to play the first Blupi
+                      games (and a lot more)<br /><img
+                        style="margin-right: 6px"
+                        src="images/fr.png"
+                      />L'émulateur Smaky que vous pouvez utiliser pour jouer au
+                      premiers jeux Blupi (et beaucoup plus encore)
                     </td>
                   </tr>
                   <tr>
@@ -446,9 +601,14 @@
                       </a>
                     </th>
                     <td>
-                      Here you can play Blupi Explorer, Blupi at Home and
-                      Blupimania online (MS-DOS versions of the Smaky Blupi
-                      games)
+                      <img style="margin-right: 6px" src="images/en.png" />Here
+                      you can play Blupi Explorer, Blupi at Home and Blupimania
+                      online (MS-DOS versions of the Smaky Blupi games)<br /><img
+                        style="margin-right: 6px"
+                        src="images/fr.png"
+                      />Ici vous pouvez jouer en ligne à Blupi Explorateur,
+                      Blupi à la maison et Blupimania (versions MS-DOS des jeux
+                      Blupi du Smaky)
                     </td>
                   </tr>
                 </table>
@@ -461,37 +621,80 @@
         <div class="container-fluid">
           <div>
             <h2 style="color: white">Archives</h2>
-            <p style="color: #ddd">
-              In this section you will find the ISO images and the manuals of
-              most Epsitec SA games (last Epsitec SA releases). If possible,
-              prefer the new releases at the top of this page.
-              <em
-                >Please, don't report bugs for archived games because it's no
-                longer maintained!</em
-              >
-            </p>
-            <p style="color: #ddd">
-              All images are compressed with 7zip; look at
-              <a href="http://www.7-zip.org/" target="_">www.7-zip.org</a>.
-            </p>
-            <p style="color: #ddd">
-              With all DOS games, choose the <b>Sound Blaster</b> as sound card
-              when playing with DosBox. Do not choose Sound Blaster Pro which is
-              not working fine.
-            </p>
+            <div class="card-group">
+              <div class="card" style="background-color: transparent">
+                <div class="card-body">
+                  <p style="color: #ddd">
+                    <img style="margin-right: 6px" src="images/en.png" /> In
+                    this section you will find the ISO images and the manuals of
+                    most Epsitec SA games (last Epsitec SA releases). If
+                    possible, prefer the new releases at the top of this page.
+                    <em
+                      >Please, don't report bugs for archived games because it's
+                      no longer maintained!</em
+                    >
+                  </p>
+                  <p style="color: #ddd">
+                    All images are compressed with 7zip; look at
+                    <a href="http://www.7-zip.org/" target="_">www.7-zip.org</a
+                    >.
+                  </p>
+                  <p style="color: #ddd">
+                    With all DOS games, choose the <b>Sound Blaster</b> as sound
+                    card when playing with DosBox. Do not choose Sound Blaster
+                    Pro which is not working fine.
+                  </p>
+                </div>
+              </div>
+              <div class="card" style="background-color: transparent">
+                <div class="card-body">
+                  <p style="color: #ddd">
+                    <img style="margin-right: 6px" src="images/fr.png" />
+                    Dans cette section vous trouverez les images ISO et les
+                    manuels de la plupart des jeux d'Epsitec SA (les dernières
+                    versions publiées). Si possible, préférez les nouvelles
+                    publications au sommet de cette page internet.
+                    <em
+                      >S'il vous plaît, ne rapportez aucun défaut pour les jeux
+                      archivés parce qu'ils ne sont plus maintenus.</em
+                    >
+                  </p>
+                  <p style="color: #ddd">
+                    Toutes les images sont comprimées avec 7zip; voir
+                    <a href="http://www.7-zip.org/" target="_">www.7-zip.org</a
+                    >.
+                  </p>
+                  <p style="color: #ddd">
+                    Concernant les jeux DOS, choisissez la carte son
+                    <b>Sound Blaster</b> quand vous désirez y jouer avec DosBox.
+                    Ne choisissez pas la carte Sound Blaster Pro qui ne
+                    fonctionne pas aussi bien.
+                  </p>
+                </div>
+              </div>
+            </div>
             <table
               class="table table-striped table-dark"
               style="width: 100%; margin-left: 3px"
             >
               <thead>
                 <tr>
-                  <th>Game</th>
+                  <th>Game / Jeu</th>
                   <th>Version</th>
                   <th>OS</th>
-                  <th>Image <small>(7z)</small></th>
+                  <th>
+                    <i class="fa fa-download" aria-hidden="true"></i> Image
+                    <small>(7z)</small>
+                  </th>
                   <th>Type</th>
-                  <th>Music <small>(7z)</small></th>
-                  <th>Manual <small>(PDF)</small></th>
+                  <th>
+                    Music / Musique <small>(7z)</small>
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                  </th>
+                  <th>
+                    Manual / Manuel <small>(PDF)</small>
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -501,7 +704,7 @@
                       class="pop"
                       data-toggle="popover"
                       data-content="<img width='200' height='200' src='images/home.cover.jpg'>"
-                      >Blupi at Home</span
+                      >Blupi at Home<br />Blupi à la maison</span
                     >
                   </td>
                   <td>v2.0 <small>(1999)</small></td>
@@ -556,7 +759,8 @@
                       data-content="<img width='300' height='179' src='images/homelegacy.cover.jpg'>"
                       data-toggle="tooltip"
                       title="It's the official DOS clone of the original Smaky version."
-                      >Blupi at Home <small>(legacy)</small></span
+                      >Blupi at Home <small>(legacy)</small><br />Blupi à la
+                      maison <small>(ancien)</small></span
                     >
                   </td>
                   <td>v1.0 <small>(1995)</small></td>
@@ -618,7 +822,8 @@
                       data-content="<img width='300' height='164' src='images/explorerlegacy.cover.jpg'>"
                       data-toggle="tooltip"
                       title="It's the official DOS clone of the original Smaky version."
-                      >Blupi Explorer <small>(legacy)</small></span
+                      >Blupi Explorer <small>(legacy)</small><br />Blupi
+                      Explorateur <small>(ancien)</small></span
                     >
                   </td>
                   <td>v2.4 <small>(1994-1995)</small></td>
@@ -1156,7 +1361,7 @@
                       class="pop"
                       data-toggle="popover"
                       data-content="<img width='200' height='199' src='images/fun.cover.jpg'>"
-                      >Fun with Blupi</span
+                      >Fun with Blupi<br />Blupi s'amuse</span
                     >
                   </td>
                   <td>v1.0 <small>(2000)</small></td>
@@ -1192,7 +1397,7 @@
                       class="pop"
                       data-toggle="popover"
                       data-content="<img width='300' height='216' src='images/planet.cover.jpg'>"
-                      >Planet Blupi</span
+                      >Planet Blupi<br />Planète Blupi</span
                     >
                   </td>
                   <td>v1.7, 1.8 <small>(1997)</small></td>
