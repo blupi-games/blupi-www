@@ -9,6 +9,10 @@
     <script src="../cdn/bootstrap/jquery.slim.min.js"></script>
     <script src="../cdn/bootstrap/js/bootstrap.bundle.min.js"></script>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
       html,
       body {
         width: 100%;
@@ -570,9 +574,8 @@
                   surprises. <em>Planet Blupi</em> is ideal for ages 12 to 99.
                 </p>
                 <p>
-                  The game was freed (source code and all media files) and
-                  ported to all major platforms (Linux, macOS and Windows) for
-                  it's
+                  The game was freed (source code and all art files) and ported
+                  to all major platforms (Linux, macOS and Windows) for it's
                   <b>20th anniversary</b>.
                 </p>
                 <p>
@@ -1439,8 +1442,7 @@
                         <tr>
                           <th scope="row" style="width: 1%">New</th>
                           <td>
-                            Whole source-code and media files under GPL3+
-                            license
+                            Whole source-code and art files under GPL3+ license
                           </td>
                         </tr>
                         <tr>
@@ -2164,249 +2166,261 @@
             </div>
           </div>
         </div>
-        <div class="card-group" id="downloads">
-          <div class="card">
-            <img
-              class="card-img-top imgos"
-              src="images/linux.png"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <div class="card-block">
-                <h4 class="card-title">
-                  GNU/Linux
-                  <small>//</small>
-                  <small>x86-64</small>
-                </h4>
-                <p>
-                  <img style="margin-right: 6px" src="images/en.png" />
-                  <small
-                    >It should work on "all" GNU/Linux distributions.</small
-                  >
-                </p>
-                <p class="card-text">
-                  Standalone
-                  <a href="http://appimage.org" target="_">AppImage</a> version,
-                  just
-                  <a
-                    href="http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80"
-                    target="_"
-                    >add the executable flag</a
-                  >
-                  and play.
-                </p>
-                <p class="card-text">
-                  If you prefer, an official Debian package is available
-                  <a
-                    href="https://packages.debian.org/unstable/planetblupi"
-                    target="_"
-                    >here</a
-                  >. For Slackware, look at
-                  <a href="https://slackbuilds.org" target="_"
-                    >slackbuilds.org</a
-                  >.
-                </p>
-                <hr />
+        <div class="card" id="downloads">
+          <div class="card-body">
+            <h3>Downloads / Téléchargements</h3>
+          </div>
+          <div class="card-group">
+            <div class="card">
+              <img
+                class="card-img-top imgos"
+                src="images/linux.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <div class="card-block">
+                  <h4 class="card-title">
+                    GNU/Linux
+                    <small>//</small>
+                    <small>x86-64</small>
+                  </h4>
+                  <p>
+                    <img style="margin-right: 6px" src="images/en.png" />
+                    <small
+                      >It should work on "all" GNU/Linux distributions.</small
+                    >
+                  </p>
+                  <p class="card-text">
+                    Standalone
+                    <a href="http://appimage.org" target="_">AppImage</a>
+                    version, just
+                    <a
+                      href="http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80"
+                      target="_"
+                      >add the executable flag</a
+                    >
+                    and play.
+                  </p>
+                  <p class="card-text">
+                    If you prefer, an official Debian package is available
+                    <a
+                      href="https://packages.debian.org/unstable/planetblupi"
+                      target="_"
+                      >here</a
+                    >. For Slackware, look at
+                    <a href="https://slackbuilds.org" target="_"
+                      >slackbuilds.org</a
+                    >.
+                  </p>
+                  <hr />
 
-                <p>
-                  <img style="margin-right: 6px" src="images/fr.png" />
-                  <small
-                    >Cette version devrait fonctionner sur toutes les
-                    distributions GNU/Linux.</small
-                  >
-                </p>
-                <p class="card-text">
-                  Version
-                  <a href="http://appimage.org" target="_">AppImage</a>
-                  tout-en-un, simplement
-                  <a
-                    href="http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80"
-                    target="_"
-                    >ajouter le droit d'exécution</a
-                  >
-                  et jouer.
-                </p>
-                <p class="card-text">
-                  Si vous préférez, un paquet Debian officiel est disponible
-                  <a
-                    href="https://packages.debian.org/unstable/planetblupi"
-                    target="_"
-                    >ici</a
-                  >. Pour Slackware, voir
-                  <a href="https://slackbuilds.org" target="_"
-                    >slackbuilds.org</a
-                  >.
-                </p>
+                  <p>
+                    <img style="margin-right: 6px" src="images/fr.png" />
+                    <small
+                      >Cette version devrait fonctionner sur toutes les
+                      distributions GNU/Linux.</small
+                    >
+                  </p>
+                  <p class="card-text">
+                    Version
+                    <a href="http://appimage.org" target="_">AppImage</a>
+                    tout-en-un, simplement
+                    <a
+                      href="http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80/3"
+                      target="_"
+                      >ajouter le droit d'exécution</a
+                    >
+                    et jouer.
+                  </p>
+                  <p class="card-text">
+                    Si vous préférez, un paquet Debian officiel est disponible
+                    <a
+                      href="https://packages.debian.org/unstable/planetblupi"
+                      target="_"
+                      >ici</a
+                    >. Pour Slackware, voir
+                    <a href="https://slackbuilds.org" target="_"
+                      >slackbuilds.org</a
+                    >.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="card-footer">
-              <a
-                href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.15.0/planetblupi-1.15.0.AppImage"
-                class="btn btn-primary"
-              >
-                <i class="fa fa-download" aria-hidden="true"></i> AppImage</a
-              >
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card-img-top imgos"
-              src="images/macos.png"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <div class="card-block">
-                <h4 class="card-title">
-                  macOS
-                  <small>//</small>
-                  <small>x86-64</small>
-                </h4>
-                <p>
-                  <img style="margin-right: 6px" src="images/en.png" />
-                  <small
-                    >macOS &#x2265; 10.9 / &#x2265; 10.13 (since v1.15).</small
-                  >
-                </p>
-                <p class="card-text">
-                  Open the DMG image, copy the game in the Applications
-                  directory or where you want or execute directly from the
-                  image.
-                </p>
-                <hr />
-                <p>
-                  <img style="margin-right: 6px" src="images/fr.png" />
-                  <small
-                    >macOS &#x2265; 10.9 / &#x2265; 10.13 (depuis v1.15).</small
-                  >
-                </p>
-                <p class="card-text">
-                  Ouvrir l'image DMG, copier le jeu dans le dossier Applications
-                  ou où vous le souhaitez ou exécuter directement le jeu depuis
-                  l'image.
-                </p>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="btn-group" role="group">
+              <div class="card-footer">
                 <a
-                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.15.0/planetblupi-1.15.0.dmg"
+                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.15.0/planetblupi-1.15.0.AppImage"
                   class="btn btn-primary"
                 >
-                  <i class="fa fa-download" aria-hidden="true"></i> DMG</a
-                >
-                <a
-                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2.dmg"
-                  class="btn btn-secondary"
-                >
-                  for old macOS</a
+                  <i class="fa fa-download" aria-hidden="true"></i> AppImage</a
                 >
               </div>
             </div>
-          </div>
-          <div class="card">
-            <img
-              class="card-img-top imgos"
-              src="images/windows.png"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <div class="card-block">
-                <h4 class="card-title">
-                  Windows
-                  <small>//</small>
-                  <small>x86</small>
-                </h4>
-                <p>
-                  <img style="margin-right: 6px" src="images/en.png" />
-                  <small>Windows Vista (x86-32), 7, 8, 8.1, 10, ...</small>
-                </p>
-                <p class="card-text">
-                  Windows version which can be installed with this
-                  <a href="http://nsis.sourceforge.net" target="_">NSIS</a>
-                  installer. Just start the game with the shortcut installed in
-                  you start menu.
-                </p>
-                <p class="card-text">
-                  If possible, prefer the updated x86-64 version.
-                </p>
-                <hr />
-                <p>
-                  <img style="margin-right: 6px" src="images/fr.png" />
-                  <small>Windows Vista (x86-32), 7, 8, 8.1, 10, ...</small>
-                </p>
-                <p class="card-text">
-                  Version Windows qui est installée avec l'aide d'un installeur
-                  <a href="http://nsis.sourceforge.net" target="_">NSIS</a>.
-                  Exécuter le jeu via le raccourci déployé dans le menu
-                  démarrer.
-                </p>
-                <p class="card-text">
-                  Si possible, préférez la version x86-64 qui est plus récente.
-                </p>
+            <div class="card">
+              <img
+                class="card-img-top imgos"
+                src="images/macos.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <div class="card-block">
+                  <h4 class="card-title">
+                    macOS
+                    <small>//</small>
+                    <small>x86-64</small>
+                  </h4>
+                  <p>
+                    <img style="margin-right: 6px" src="images/en.png" />
+                    <small
+                      >macOS &#x2265; 10.9 / &#x2265; 10.13 (since
+                      v1.15).</small
+                    >
+                  </p>
+                  <p class="card-text">
+                    Open the DMG image, copy the game in the Applications
+                    directory or where you want or execute directly from the
+                    image.
+                  </p>
+                  <hr />
+                  <p>
+                    <img style="margin-right: 6px" src="images/fr.png" />
+                    <small
+                      >macOS &#x2265; 10.9 / &#x2265; 10.13 (depuis
+                      v1.15).</small
+                    >
+                  </p>
+                  <p class="card-text">
+                    Ouvrir l'image DMG, copier le jeu dans le dossier
+                    Applications ou où vous le souhaitez ou exécuter directement
+                    le jeu depuis l'image.
+                  </p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="btn-group" role="group">
+                  <a
+                    href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.15.0/planetblupi-1.15.0.dmg"
+                    class="btn btn-primary"
+                  >
+                    <i class="fa fa-download" aria-hidden="true"></i> DMG</a
+                  >
+                  <a
+                    href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2.dmg"
+                    class="btn btn-secondary"
+                  >
+                    for old macOS</a
+                  >
+                </div>
               </div>
             </div>
-            <div class="card-footer">
-              <div class="btn-group" role="group">
-                <a
-                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.15.0/planetblupi-1.15.0.exe"
-                  class="btn btn-primary"
-                >
-                  <i class="fa fa-download" aria-hidden="true"></i> Setup
-                  x86-64</a
-                >
-                <a
-                  href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2-x86_32.exe"
-                  class="btn btn-secondary"
-                  >x86-32</a
-                >
+            <div class="card">
+              <img
+                class="card-img-top imgos"
+                src="images/windows.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <div class="card-block">
+                  <h4 class="card-title">
+                    Windows
+                    <small>//</small>
+                    <small>x86</small>
+                  </h4>
+                  <p>
+                    <img style="margin-right: 6px" src="images/en.png" />
+                    <small>Windows Vista (x86-32), 7, 8, 8.1, 10, ...</small>
+                  </p>
+                  <p class="card-text">
+                    Windows version which can be installed with this
+                    <a href="http://nsis.sourceforge.net" target="_">NSIS</a>
+                    installer. Just start the game with the shortcut installed
+                    in you start menu.
+                  </p>
+                  <p class="card-text">
+                    If possible, prefer the updated x86-64 version.
+                  </p>
+                  <hr />
+                  <p>
+                    <img style="margin-right: 6px" src="images/fr.png" />
+                    <small>Windows Vista (x86-32), 7, 8, 8.1, 10, ...</small>
+                  </p>
+                  <p class="card-text">
+                    Version Windows qui est installée avec l'aide d'un
+                    installeur
+                    <a href="http://nsis.sourceforge.net" target="_">NSIS</a>.
+                    Exécuter le jeu via le raccourci déployé dans le menu
+                    démarrer.
+                  </p>
+                  <p class="card-text">
+                    Si possible, préférez la version x86-64 qui est plus
+                    récente.
+                  </p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="btn-group" role="group">
+                  <a
+                    href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.15.0/planetblupi-1.15.0.exe"
+                    class="btn btn-primary"
+                  >
+                    <i class="fa fa-download" aria-hidden="true"></i> Setup
+                    x86-64</a
+                  >
+                  <a
+                    href="https://github.com/blupi-games/planetblupi-dev/releases/download/v1.14.2/planetblupi-1.14.2-x86_32.exe"
+                    class="btn btn-secondary"
+                    >x86-32</a
+                  >
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card">
-            <img
-              class="card-img-top imgos"
-              src="images/emscripten.png"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <div class="card-block">
-                <h4 class="card-title">
-                  HTML
-                  <small>//</small>
-                  <small>js</small>
-                </h4>
-                <p>
-                  <img style="margin-right: 6px" src="images/en.png" />
-                  <small>Mozilla Firefox, Google Chrome, ...</small>
-                </p>
-                <p class="card-text">
-                  Experimental online version compiled to WebAssembly and
-                  JavaScript. The WebAssembly version is prefered (faster). But
-                  on "very older" web browsers, WebAssembly is not supported and
-                  maybe the <tt>asm.js</tt> works fine.
-                </p>
-                <hr />
-                <p>
-                  <img style="margin-right: 6px" src="images/fr.png" />
-                  <small>Mozilla Firefox, Google Chrome, ...</small>
-                </p>
-                <p class="card-text">
-                  Version expérimentale, en ligne, construite en WebAssembly et
-                  JavaScript. La version WebAssembly devrait être préférée (plus
-                  rapide). Mais sur les "très anciens" navigateurs internet, le
-                  WebAssembly n'est pas supporté et peut être que la version
-                  <tt>asm.js</tt> fonctionne bien.
-                </p>
+            <div class="card">
+              <img
+                class="card-img-top imgos"
+                src="images/emscripten.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <div class="card-block">
+                  <h4 class="card-title">
+                    HTML
+                    <small>//</small>
+                    <small>js</small>
+                  </h4>
+                  <p>
+                    <img style="margin-right: 6px" src="images/en.png" />
+                    <small>Mozilla Firefox, Google Chrome, ...</small>
+                  </p>
+                  <p class="card-text">
+                    Experimental online version compiled to WebAssembly and
+                    JavaScript. The WebAssembly version is prefered (faster).
+                    But on "very older" web browsers, WebAssembly is not
+                    supported and maybe the <tt>asm.js</tt> works fine.
+                  </p>
+                  <hr />
+                  <p>
+                    <img style="margin-right: 6px" src="images/fr.png" />
+                    <small>Mozilla Firefox, Google Chrome, ...</small>
+                  </p>
+                  <p class="card-text">
+                    Version expérimentale, en ligne, construite en WebAssembly
+                    et JavaScript. La version WebAssembly devrait être préférée
+                    (plus rapide). Mais sur les "très anciens" navigateurs
+                    internet, le WebAssembly n'est pas supporté et peut être que
+                    la version
+                    <tt>asm.js</tt> fonctionne bien.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="card-footer">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <a href="html/planetblupi.wasm.html" class="btn btn-primary"
-                  >WASM</a
-                >
-                <a href="html/planetblupi.asmjs.html" class="btn btn-secondary"
-                  >asm.js</a
-                >
+              <div class="card-footer">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a href="html/planetblupi.wasm.html" class="btn btn-primary"
+                    >WASM</a
+                  >
+                  <a
+                    href="html/planetblupi.asmjs.html"
+                    class="btn btn-secondary"
+                    >asm.js</a
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -2420,7 +2434,7 @@
                   community
                 </h3>
                 <p>
-                  The whole source-code and all media files are available on
+                  The whole source-code and all art files are available on
                   GitHub.
                 </p>
               </div>
