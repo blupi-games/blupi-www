@@ -2,7 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Official website for all Epsitec SA games"
+    />
+    <meta
+      name="keywords"
+      content="Blupi, Blupimania, BuzzingCars, CeeBot, CoLoBoT, Eggbert, Planet Blupi, Speedy Blupi, Speedy Eggbert"
+    />
+    <meta name="author" content="Mathieu Schroeter" />
     <title>Blupi / Eggbert Games</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="cdn/ubuntu/fonts.css" rel="stylesheet" />
     <link rel="stylesheet" href="cdn/fontawesome/css/all.css" />
     <link rel="stylesheet" href="cdn/bootstrap/css/bootstrap.min.css" />
@@ -22,6 +32,10 @@
       });
     </script>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
       html,
       body {
         width: 100%;
@@ -95,7 +109,7 @@
       .card {
         margin-top: 5px;
         margin-bottom: 5px;
-        min-width: 15em;
+        min-width: 20em;
         border: none;
       }
 
@@ -133,6 +147,16 @@
         animation: highlight 1s alternate-reverse infinite;
       }
 
+      .imgbase:hover > .imgfooter {
+        animation: highlight 1s alternate-reverse infinite;
+      }
+
+      .imgfooter {
+        height: 200px;
+        z-index: 1;
+        background-color: #f7f7f7;
+      }
+
       .imgos {
         height: auto;
         width: 100%;
@@ -160,6 +184,22 @@
       .pop {
         cursor: default;
         color: #b4d3f3;
+      }
+
+      .card-video:hover > .video-player {
+        display: block;
+      }
+
+      .video-player {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 100%;
+        z-index: 1;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       }
 
       th {
@@ -204,25 +244,65 @@
           Blupi Games <span style="font-size: 40%">(Eggbert Games)</span>
         </h1>
         <div class="card-group" style="cursor: pointer">
-          <div class="card imgbase">
-            <a class="imgos" href="/planet/index.html"
+          <div class="card-video card imgbase">
+            <a class="imgos" href="mania/index.html"
+              ><img
+                class="card-img-top imgos"
+                style="transform: scale(1.6) translateY(-14px)"
+                src="images/mania.png"
+                alt="Card image cap" />
+              <video
+                class="video-player"
+                src="images/mania.mp4"
+                playsinline
+                muted
+                loop
+              ></video
+            ></a>
+            <div
+              class="card-footer imgfooter"
+              onclick="window.location = 'mania/index.html'"
+            >
+              <h2 class="card-title">Blupimania</h2>
+              <p>
+                Official version
+                <span style="font-size: 70%">(open-source)</span><br />Version
+                officielle <span style="font-size: 70%">(code libre)</span
+                ><br />
+                <img style="margin-right: 3px" src="images/en.png" />
+                <img style="margin-right: 3px" src="images/fr.png" />
+                <img style="margin-right: 3px" src="images/de.png" />
+              </p>
+            </div>
+          </div>
+          <div class="card-video card imgbase">
+            <a class="imgos" href="planet/index.html"
               ><img
                 class="card-img-top imgos"
                 style="transform: scale(1.6) translateY(-25px)"
                 src="images/planet.png"
-                alt="Card image cap"
-            /></a>
+                alt="Card image cap" />
+              <video
+                class="video-player"
+                src="images/planet.mp4"
+                playsinline
+                muted
+                loop
+              ></video
+            ></a>
             <div
-              class="card-footer"
-              onclick="window.location = '/planet/index.html'"
+              class="card-footer imgfooter"
+              onclick="window.location = 'planet/index.html'"
             >
               <h2 class="card-title">
                 Planet Blupi
                 <span style="font-size: 40%">(Planet Eggbert)</span>
               </h2>
               <p>
-                Official version (open-source)<br />Version officielle (code
-                source ouvert) <br />
+                Official version
+                <span style="font-size: 70%">(open-source)</span><br />Version
+                officielle <span style="font-size: 70%">(code libre)</span
+                ><br />
                 <img style="margin-right: 3px" src="images/en.png" />
                 <img style="margin-right: 3px" src="images/en_US.png" />
                 <img style="margin-right: 3px" src="images/fr.png" />
@@ -237,27 +317,37 @@
               </p>
             </div>
           </div>
-          <div class="card imgbase">
+          <div class="card-video card imgbase">
             <a class="imgos" href="https://colobot.info" target="_"
               ><img
                 class="card-img-top imgos"
                 src="images/colobot.png"
-                alt="Card image cap"
-            /></a>
+                alt="Card image cap" />
+              <video
+                class="video-player"
+                src="images/bot.mp4"
+                playsinline
+                muted
+                loop
+              ></video
+            ></a>
             <div
-              class="card-footer"
+              class="card-footer imgfooter"
               onclick="window.open ('https://colobot.info', '_blank');"
             >
               <h2 class="card-title">CoLoBoT</h2>
               <p>
-                Official version by TerranovaTeam (open-source)<br />Version
-                officielle par TerranovaTeam (code source ouvert)<br />
+                Official version by TerranovaTeam
+                <span style="font-size: 70%">(open-source)</span><br />Version
+                officielle par TerranovaTeam
+                <span style="font-size: 70%">(code libre)</span><br />
                 <img style="margin-right: 3px" src="images/en.png" />
                 <img style="margin-right: 3px" src="images/fr.png" />
                 <img style="margin-right: 3px" src="images/de.png" />
                 <img style="margin-right: 3px" src="images/pl.png" />
                 <img style="margin-right: 3px" src="images/ru.png" />
                 <img style="margin-right: 3px" src="images/cs.png" />
+                <img style="margin-right: 3px" src="images/pt.png" />
               </p>
             </div>
           </div>
@@ -287,8 +377,9 @@
                 >.
               </p>
               <p>
-                This website provides an archives section (ath the bottom of
-                this page) with mostly all the games. But you should download in
+                This website provides an archives section (<u
+                  >at the bottom of this page</u
+                >) with mostly all the games. But you should download in
                 priority the releases provided by this website on
                 <b>top of this page</b> instead of the
                 <em>archives</em> section. The CoLoBoT game is actively
@@ -327,9 +418,10 @@
                 >.
               </p>
               <p>
-                Ce site internet met à disposition une section d'archives (tout
-                en bas de cette page) avec pratiquement tous les jeux. Mais vous
-                devriez télécharger en priorité les versions proposées
+                Ce site internet met à disposition une section d'archives (<u
+                  >tout en bas de cette page</u
+                >) avec pratiquement tous les jeux. Mais vous devriez
+                télécharger en priorité les versions proposées
                 <b>au sommet de cette page</b>, au lieu de les prendre dans la
                 section des <em>archives</em>. Le jeu CoLoBoT est activement
                 développé par
@@ -465,7 +557,7 @@
                         style="width: 150px; margin-bottom: 5px"
                       >
                         <i class="fab fa-twitter" aria-hidden="true"></i>
-                        Twitter
+                        Twitter / 𝕏
                       </button></a
                     >
                     <a href="https://www.facebook.com/BlupiGames" target="_">
@@ -627,7 +719,8 @@
                     <img style="margin-right: 6px" src="images/en.png" /> In
                     this section you will find the ISO images and the manuals of
                     most Epsitec SA games (last Epsitec SA releases). If
-                    possible, prefer the new releases at the top of this page.
+                    possible,
+                    <b>prefer the new releases at the top of this page</b>.
                     <em
                       >Please, don't report bugs for archived games because it's
                       no longer maintained!</em
@@ -640,8 +733,7 @@
                   </p>
                   <p style="color: #ddd">
                     With all DOS games, choose the <b>Sound Blaster</b> as sound
-                    card when playing with DosBox. Do not choose Sound Blaster
-                    Pro which is not working fine.
+                    card when playing with DOSBox.
                   </p>
                 </div>
               </div>
@@ -651,8 +743,11 @@
                     <img style="margin-right: 6px" src="images/fr.png" />
                     Dans cette section vous trouverez les images ISO et les
                     manuels de la plupart des jeux d'Epsitec SA (les dernières
-                    versions publiées). Si possible, préférez les nouvelles
-                    publications au sommet de cette page internet.
+                    versions publiées). Si possible,
+                    <b
+                      >préférez les nouvelles publications au sommet de cette
+                      page</b
+                    >.
                     <em
                       >S'il vous plaît, ne rapportez aucun défaut pour les jeux
                       archivés parce qu'ils ne sont plus maintenus.</em
@@ -665,9 +760,7 @@
                   </p>
                   <p style="color: #ddd">
                     Concernant les jeux DOS, choisissez la carte son
-                    <b>Sound Blaster</b> quand vous désirez y jouer avec DosBox.
-                    Ne choisissez pas la carte Sound Blaster Pro qui ne
-                    fonctionne pas aussi bien.
+                    <b>Sound Blaster</b> quand vous désirez y jouer avec DOSBox.
                   </p>
                 </div>
               </div>
@@ -710,37 +803,37 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
+                      href="download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
+                      href="download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
+                      href="download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
+                      href="download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
                       class="btn btn-outline-primary btn-sm lang"
                       role="button"
                       >it</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
+                      href="download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
                       class="btn btn-outline-danger btn-sm lang"
                       role="button"
                       >es</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
+                      href="download/img/BlupiAtHome-en.fr.de.it.es.pt.iso.7z"
                       class="btn btn-outline-light btn-sm lang"
                       role="button"
                       >pt</a
@@ -766,27 +859,27 @@
                   <td>DOS</td>
                   <td>
                     <a
-                      href="/download/img/BlupiAtHome-Legacy-en.fr.de.iso.7z"
+                      href="download/img/BlupiAtHome-Legacy-en.fr.de.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em>.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em>.</p>"
                       >en</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-Legacy-en.fr.de.iso.7z"
+                      href="download/img/BlupiAtHome-Legacy-en.fr.de.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em>.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em>.</p>"
                       >fr</a
                     >
                     <a
-                      href="/download/img/BlupiAtHome-Legacy-en.fr.de.iso.7z"
+                      href="download/img/BlupiAtHome-Legacy-en.fr.de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em>.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em>.</p>"
                       >de</a
                     >
                   </td>
@@ -794,19 +887,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/BlupiAtHome-Legacy-en.pdf"
+                      href="download/man/BlupiAtHome-Legacy-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/BlupiAtHome-Legacy-fr.pdf"
+                      href="download/man/BlupiAtHome-Legacy-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/BlupiAtHome-Legacy-de.pdf"
+                      href="download/man/BlupiAtHome-Legacy-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -829,11 +922,11 @@
                   <td>DOS</td>
                   <td>
                     <a
-                      href="/download/img/BlupiExplorer-Legacy-en.7z"
+                      href="download/img/BlupiExplorer-Legacy-en.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em>.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em>.</p>"
                       >en</a
                     >
                   </td>
@@ -855,35 +948,35 @@
                   <td>DOS</td>
                   <td>
                     <a
-                      href="/download/img/Blupimania-en.fr.de.iso.7z"
+                      href="download/img/Blupimania-en.fr.de.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em> but you should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em> mais vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >en</a
                     >
                     <a
-                      href="/download/img/Blupimania-en.fr.de.iso.7z"
+                      href="download/img/Blupimania-en.fr.de.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em> but you should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em> mais vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >fr</a
                     >
                     <a
-                      href="/download/img/Blupimania-fr.7z"
+                      href="download/img/Blupimania-fr.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> Old 1.44 Floppy Disk version, prefer the other one. The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Ancienne version pour disquette 1.44, préférez l'autre. Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> Old 1.44 Floppy Disk version, prefer the new version. The game is supported by <em>DOSBox</em>.</p><p><img src='images/fr.png' /> Ancienne version pour disquette 1.44, préférez la nouvelle version. Jeu supporté par <em>DOSBox</em>.</p>"
                       >.<small>fd v1.3</small></a
                     >
                     <a
-                      href="/download/img/Blupimania-en.fr.de.iso.7z"
+                      href="download/img/Blupimania-en.fr.de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> The game is supported by <b>DOSBox</b>.</p><p><img src='images/fr.png' /> Jeu supporté par <b>DOSBox</>.</p>"
+                      title="<p><img src='images/en.png' /> The game is supported by <em>DOSBox</em> but you should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Jeu supporté par <em>DOSBox</em> mais vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >de</a
                     >
                   </td>
@@ -891,19 +984,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/Blupimania-en.pdf"
+                      href="download/man/Blupimania-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/Blupimania-fr.pdf"
+                      href="download/man/Blupimania-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/Blupimania-de.pdf"
+                      href="download/man/Blupimania-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -923,19 +1016,19 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/Blupimania-2-en.iso.7z"
+                      href="download/img/Blupimania-2-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/Blupimania-2-fr.iso.7z"
+                      href="download/img/Blupimania-2-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/Blupimania-2-de.iso.7z"
+                      href="download/img/Blupimania-2-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -945,19 +1038,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/Blupimania-2-en.pdf"
+                      href="download/man/Blupimania-2-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/Blupimania-2-fr.pdf"
+                      href="download/man/Blupimania-2-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/Blupimania-2-de.pdf"
+                      href="download/man/Blupimania-2-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -977,19 +1070,19 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/BuzzingCars-en.fr.de.iso.7z"
+                      href="download/img/BuzzingCars-en.fr.de.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/BuzzingCars-en.fr.de.iso.7z"
+                      href="download/img/BuzzingCars-en.fr.de.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/BuzzingCars-en.fr.de.iso.7z"
+                      href="download/img/BuzzingCars-en.fr.de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -999,13 +1092,13 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/BuzzingCars-en.fr.pdf"
+                      href="download/man/BuzzingCars-en.fr.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/BuzzingCars-en.fr.pdf"
+                      href="download/man/BuzzingCars-en.fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
@@ -1025,19 +1118,19 @@
                   <td rowspan="2">Win</td>
                   <td>
                     <a
-                      href="/download/img/CeeBot-A-en.iso.7z"
+                      href="download/img/CeeBot-A-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/CeeBot-A-fr.iso.7z"
+                      href="download/img/CeeBot-A-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/CeeBot-A-de.iso.7z"
+                      href="download/img/CeeBot-A-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1047,19 +1140,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/CeeBot-A-en.pdf"
+                      href="download/man/CeeBot-A-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/CeeBot-A-fr.pdf"
+                      href="download/man/CeeBot-A-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/CeeBot-A-de.pdf"
+                      href="download/man/CeeBot-A-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1069,19 +1162,19 @@
                 <tr>
                   <td>
                     <a
-                      href="/download/img/CeeBot-A-EDU-en.iso.7z"
+                      href="download/img/CeeBot-A-EDU-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/CeeBot-A-EDU-fr.iso.7z"
+                      href="download/img/CeeBot-A-EDU-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/CeeBot-A-EDU-de.iso.7z"
+                      href="download/img/CeeBot-A-EDU-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1105,19 +1198,19 @@
                   <td rowspan="2">Win</td>
                   <td>
                     <a
-                      href="/download/img/CeeBot-Teen-en.iso.7z"
+                      href="download/img/CeeBot-Teen-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/CeeBot-Teen-fr.iso.7z"
+                      href="download/img/CeeBot-Teen-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/CeeBot-Teen-de.iso.7z"
+                      href="download/img/CeeBot-Teen-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1127,19 +1220,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/CeeBot-Teen-en.pdf"
+                      href="download/man/CeeBot-Teen-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/CeeBot-Teen-fr.pdf"
+                      href="download/man/CeeBot-Teen-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/CeeBot-Teen-de.pdf"
+                      href="download/man/CeeBot-Teen-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1149,19 +1242,19 @@
                 <tr>
                   <td>
                     <a
-                      href="/download/img/CeeBot-Teen-EDU-en.iso.7z"
+                      href="download/img/CeeBot-Teen-EDU-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/CeeBot-Teen-EDU-fr.iso.7z"
+                      href="download/img/CeeBot-Teen-EDU-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/CeeBot-Teen-EDU-de.iso.7z"
+                      href="download/img/CeeBot-Teen-EDU-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1178,13 +1271,13 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/CeeBot-3-en.iso.7z"
+                      href="download/img/CeeBot-3-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/CeeBot-3-de.iso.7z"
+                      href="download/img/CeeBot-3-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1194,19 +1287,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/CeeBot-3-en.pdf"
+                      href="download/man/CeeBot-3-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/CeeBot-3-fr.pdf"
+                      href="download/man/CeeBot-3-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/CeeBot-3-de.pdf"
+                      href="download/man/CeeBot-3-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1219,19 +1312,19 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/CeeBot-4-en.iso.7z"
+                      href="download/img/CeeBot-4-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/CeeBot-4-fr.iso.7z"
+                      href="download/img/CeeBot-4-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/CeeBot-4-de.iso.7z"
+                      href="download/img/CeeBot-4-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1241,19 +1334,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/CeeBot-4-en.pdf"
+                      href="download/man/CeeBot-4-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/CeeBot-4-fr.pdf"
+                      href="download/man/CeeBot-4-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/CeeBot-4-de.pdf"
+                      href="download/man/CeeBot-4-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1273,42 +1366,42 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/CoLoBoT-en.iso.7z"
+                      href="download/img/CoLoBoT-en.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >en</a
                     >
                     <a
-                      href="/download/img/CoLoBoT-fr.iso.7z"
+                      href="download/img/CoLoBoT-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >fr</a
                     >
                     <a
-                      href="/download/img/CoLoBoT-de.iso.7z"
+                      href="download/img/CoLoBoT-de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >de</a
                     >
                     <a
-                      href="/download/img/CoLoBoT-pl.bin.cue.7z"
+                      href="download/img/CoLoBoT-pl.bin.cue.7z"
                       class="btn btn-outline-info btn-sm lang lang-pl"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >pl .<small>v1.9</small></a
                     >
                   </td>
                   <td>CD</td>
                   <td>
                     <a
-                      href="/download/audio/CoLoBoT-AudioCD.7z"
+                      href="download/audio/CoLoBoT-AudioCD.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
@@ -1318,37 +1411,37 @@
                   </td>
                   <td>
                     <a
-                      href="/download/man/CoLoBoT-en.pdf"
+                      href="download/man/CoLoBoT-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/CoLoBoT-editor-en.pdf"
+                      href="download/man/CoLoBoT-editor-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >.<small>adv</small></a
                     >
                     <a
-                      href="/download/man/CoLoBoT-fr.pdf"
+                      href="download/man/CoLoBoT-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/CoLoBoT-editor-fr.pdf"
+                      href="download/man/CoLoBoT-editor-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >.<small>adv</small></a
                     >
                     <a
-                      href="/download/man/CBot-fr.pdf"
+                      href="download/man/CBot-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >.<small>cbot</small></a
                     >
                     <a
-                      href="/download/man/CoLoBoT-Network-fr.pdf"
+                      href="download/man/CoLoBoT-Network-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >.<small>net</small></a
@@ -1368,7 +1461,7 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/FunWithBlupi-fr.iso.7z"
+                      href="download/img/FunWithBlupi-fr.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
@@ -1378,13 +1471,13 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/FunWithBlupi-fr.pdf"
+                      href="download/man/FunWithBlupi-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/FunWithBlupi-cd-fr.pdf"
+                      href="download/man/FunWithBlupi-cd-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >.<small>cd</small></a
@@ -1404,43 +1497,43 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >en</a
                     >
                     <a
-                      href="/download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-warning btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >en_US</a
                     >
                     <a
-                      href="/download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >fr</a
                     >
                     <a
-                      href="/download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/PlanetBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >de</a
                     >
                     <a
-                      href="/download/img/PlanetBlupi-it.iso.7z"
+                      href="download/img/PlanetBlupi-it.iso.7z"
                       class="btn btn-outline-primary btn-sm lang"
                       role="button"
                       data-toggle="tooltip"
-                      title="<p><img src='images/en.png' /> <b>Are you sure?</b></br>You should <em>really</em> consider the new official version instead.</p><p><img src='images/fr.png' /> <b>Etes-vous sûr ?</b><br/> Vous devriez <em>vraiment</em> considérer à la place, la nouvelle version officielle.</p>"
+                      title="<p><img src='images/en.png' /> You should <b>really</b> consider the new official version instead.</p><p><img src='images/fr.png' /> Vous devriez <b>vraiment</b> considérer de télécharger la nouvelle version officielle.</p>"
                       >it</a
                     >
                   </td>
@@ -1448,25 +1541,25 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/PlanetBlupi-en.pdf"
+                      href="download/man/PlanetBlupi-en.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/PlanetBlupi-fr.pdf"
+                      href="download/man/PlanetBlupi-fr.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/PlanetBlupi-de.pdf"
+                      href="download/man/PlanetBlupi-de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
                     >
                     <a
-                      href="/download/man/PlanetBlupi-es.pdf"
+                      href="download/man/PlanetBlupi-es.pdf"
                       class="btn btn-outline-danger btn-sm lang"
                       role="button"
                       >es</a
@@ -1486,25 +1579,25 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-warning btn-sm lang"
                       role="button"
                       >en_US</a
                     >
                     <a
-                      href="/download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1514,19 +1607,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/SpeedyBlupi-en.fr.de.pdf"
+                      href="download/man/SpeedyBlupi-en.fr.de.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/SpeedyBlupi-en.fr.de.pdf"
+                      href="download/man/SpeedyBlupi-en.fr.de.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/SpeedyBlupi-en.fr.de.pdf"
+                      href="download/man/SpeedyBlupi-en.fr.de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1546,25 +1639,25 @@
                   <td>Win</td>
                   <td>
                     <a
-                      href="/download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-warning btn-sm lang"
                       role="button"
                       >en_US</a
                     >
                     <a
-                      href="/download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
+                      href="download/img/SpeedyBlupi-2-en.en_US.fr.de.iso.7z"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1574,19 +1667,19 @@
                   <td></td>
                   <td>
                     <a
-                      href="/download/man/SpeedyBlupi-2-en.fr.de.pdf"
+                      href="download/man/SpeedyBlupi-2-en.fr.de.pdf"
                       class="btn btn-outline-info btn-sm lang"
                       role="button"
                       >en</a
                     >
                     <a
-                      href="/download/man/SpeedyBlupi-2-en.fr.de.pdf"
+                      href="download/man/SpeedyBlupi-2-en.fr.de.pdf"
                       class="btn btn-outline-success btn-sm lang"
                       role="button"
                       >fr</a
                     >
                     <a
-                      href="/download/man/SpeedyBlupi-2-en.fr.de.pdf"
+                      href="download/man/SpeedyBlupi-2-en.fr.de.pdf"
                       class="btn btn-outline-secondary btn-sm lang"
                       role="button"
                       >de</a
@@ -1600,5 +1693,24 @@
         <div style="height: 100px"></div>
       </div>
     </div>
+    <script>
+      var all = document.querySelectorAll(".card-video");
+      all.forEach(function (elem) {
+        var video = elem.querySelector(".video-player");
+
+        elem.addEventListener("mouseover", function () {
+          video.style.display = "block";
+          if (!video.playing) {
+            video.play();
+          }
+        });
+
+        elem.addEventListener("mouseleave", function () {
+          video.style.display = "none";
+          video.pause();
+          video.currentTime = 0;
+        });
+      });
+    </script>
   </body>
 </html>
